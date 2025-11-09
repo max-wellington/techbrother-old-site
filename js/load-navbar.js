@@ -3,8 +3,8 @@ const navbarHTML = `
 <nav class="navbar">
     <div class="container">
         <div class="nav-wrapper">
-            <div class="logo">
-                <a href="home.html">
+                <div class="logo">
+                    <a href="home.html">
                     <img src="https://cdn.prod.website-files.com/68d1fdebc03c489c12937e6e/690913e2436a7d0a318501d3_logo-black.png" alt="TechBrother Logo" class="logo-image">
                 </a>
             </div>
@@ -20,7 +20,7 @@ const navbarHTML = `
                         <li class="dropdown-menu-columns">
                             <div class="dropdown-column">
                                 <div class="dropdown-category">
-                                    <a href="home.html">IT Services for Marketing Agencies</a>
+                                    <a href="marketing-agencies.html">IT Services for Marketing Agencies</a>
                                 </div>
                                 <div class="dropdown-category">
                                     <a href="general-it-consulting.html">General IT Services & Consulting</a>
@@ -30,9 +30,9 @@ const navbarHTML = `
                                 <div class="dropdown-section-group">
                                     <h4>Marketing Agencies</h4>
                                     <ul>
-                                        <li><a href="home.html#services">Services</a></li>
-                                        <li><a href="home.html#about">Why Choose Us</a></li>
-                                        <li><a href="home.html#faqs">FAQs</a></li>
+                                        <li><a href="marketing-agencies.html#services">Services</a></li>
+                                        <li><a href="marketing-agencies.html#about">Why Choose Us</a></li>
+                                        <li><a href="marketing-agencies.html#faqs">FAQs</a></li>
                                     </ul>
                                 </div>
                                 <div class="dropdown-section-group">
