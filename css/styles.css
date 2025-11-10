@@ -935,6 +935,7 @@ body {
 @media (max-width: 768px) {
     .hero {
         padding: 7rem 0 4rem;
+        margin-top: 10px;
     }
 
     .hero h1 {
