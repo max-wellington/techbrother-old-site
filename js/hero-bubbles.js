@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const heroSections = document.querySelectorAll('.hero');
+    const heroSections = document.querySelectorAll('.hero, .contact');
     if (!heroSections.length) return;
 
     const palette = [

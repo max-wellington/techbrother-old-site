@@ -164,187 +164,71 @@ document.addEventListener('DOMContentLoaded', () => {
         // setInterval(nextSlide, 5000);
     }
 
-    // Services Stacked Image Switcher
+    // Services carousel interactions
     const serviceCards = document.querySelectorAll('.service-card-stacked');
     const serviceImages = document.querySelectorAll('.service-image');
-    
-    if (serviceCards.length > 0 && serviceImages.length > 0) {
-        const tailoredSection = document.querySelector('.tailored-support');
-        // Observe tailored section visibility to limit background to its viewport
-        if (tailoredSection) {
-            const sectionObserver = new IntersectionObserver((entries) => {
-                entries.forEach(() => {
-                    // Only consider section "in view" when it's centered in the viewport
-                    const rect = tailoredSection.getBoundingClientRect();
-                    const vh = window.innerHeight || document.documentElement.clientHeight;
-                    const isCentered = rect.top <= vh * 0.25 && rect.bottom >= vh * 0.75;
-                    if (isCentered) {
-                        if (!tailoredSection.classList.contains('in-view')) {
-                            tailoredSection.classList.add('in-view');
-                            // Disable background image effects on mobile
-                            // if (window.innerWidth <= 768) {
-                            //     const activeImg = document.querySelector('.service-image.active');
-                            //     if (activeImg && !tailoredSection.style.getPropertyValue('--tailored-bg-current')) {
-                            //         tailoredSection.style.setProperty('--tailored-bg-current', `url("${activeImg.src}")`);
-                            //         tailoredSection.classList.add('image-active');
-                            //         document.body.classList.add('bg-dark-active');
-                            //     }
-                            // }
-                        }
-                    } else {
-                        if (tailoredSection.classList.contains('in-view')) {
-                            tailoredSection.classList.remove('in-view');
-                            // Disable background image effects on mobile
-                            // tailoredSection.style.removeProperty('--tailored-bg-current');
-                            // tailoredSection.style.removeProperty('--tailored-bg-next');
-                            // tailoredSection.classList.remove('image-active', 'image-fading', 'crossfading');
-                            // document.body.classList.remove('bg-dark-active');
-                        }
-                    }
-                });
-            }, { root: null, rootMargin: '-25% 0px -25% 0px', threshold: 0 });
-            sectionObserver.observe(tailoredSection);
+    const prevServiceButton = document.querySelector('.services-carousel-arrow--prev');
+    const nextServiceButton = document.querySelector('.services-carousel-arrow--next');
+    const serviceIndicatorCurrent = document.querySelector('.services-carousel-current');
+    const serviceIndicatorTotal = document.querySelector('.services-carousel-total');
+    const servicesCarouselWrapper = document.querySelector('.services-carousel-wrapper');
 
-            // Extra guard: on scroll, immediately clear when out of viewport
-            const handleScroll = () => {
-                const rect = tailoredSection.getBoundingClientRect();
-                const vh = window.innerHeight || document.documentElement.clientHeight;
-                const isAtTop = window.scrollY <= 0;
-                const isCentered = rect.top <= vh * 0.25 && rect.bottom >= vh * 0.75;
-                if (isAtTop || !isCentered) {
-                    if (tailoredSection.classList.contains('in-view')) {
-                        tailoredSection.classList.remove('in-view');
-                        // Disable background image effects on mobile
-                        // tailoredSection.style.removeProperty('--tailored-bg-current');
-                        // tailoredSection.style.removeProperty('--tailored-bg-next');
-                        // tailoredSection.classList.remove('image-active', 'image-fading', 'crossfading');
-                        // document.body.classList.remove('bg-dark-active');
-                    }
-                } else if (isCentered) {
-                    if (!tailoredSection.classList.contains('in-view')) {
-                        tailoredSection.classList.add('in-view');
-                    }
-                    // Disable background image effects on mobile
-                    // document.body.classList.add('bg-dark-active');
-                    // if (window.innerWidth <= 768) {
-                    //     const activeImg = document.querySelector('.service-image.active');
-                    //     if (activeImg && !tailoredSection.style.getPropertyValue('--tailored-bg-current')) {
-                    //         tailoredSection.style.setProperty('--tailored-bg-current', `url("${activeImg.src}")`);
-                    //         tailoredSection.classList.add('image-active');
-                    //     }
-                    // }
-                }
-            };
-            document.addEventListener('scroll', handleScroll, { passive: true });
+    if (serviceCards.length && serviceImages.length) {
+        let currentServiceIndex = 0;
+        const totalServices = serviceCards.length;
+
+        if (serviceIndicatorTotal) {
+            serviceIndicatorTotal.textContent = totalServices;
         }
-        const observerOptions = {
-            root: null,
-            rootMargin: '-20% 0px -20% 0px',
-            threshold: 0.5
+
+        const showService = (index) => {
+            let nextIndex = index;
+            if (nextIndex < 0) nextIndex = totalServices - 1;
+            if (nextIndex >= totalServices) nextIndex = 0;
+
+            serviceCards.forEach((card, cardIndex) => {
+                card.classList.toggle('active', cardIndex === nextIndex);
+            });
+
+            serviceImages.forEach((image, imageIndex) => {
+                image.classList.toggle('active', imageIndex === nextIndex);
+            });
+
+            if (serviceIndicatorCurrent) {
+                serviceIndicatorCurrent.textContent = nextIndex + 1;
+            }
+
+            currentServiceIndex = nextIndex;
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const serviceIndex = entry.target.getAttribute('data-service');
-                    
-                    // Remove active class from all cards and images
-                    serviceCards.forEach(card => card.classList.remove('active'));
-                    serviceImages.forEach(img => img.classList.remove('active'));
-                    
-                    // Add active class to current card and corresponding image
-                    entry.target.classList.add('active');
-                    const targetImage = document.querySelector(`.service-image[data-service="${serviceIndex}"]`);
-                    if (targetImage) {
-                        targetImage.classList.add('active');
-                        // Disable background image effects on mobile
-                        // const tailoredSection = document.querySelector('.tailored-support');
-                        // if (tailoredSection && window.innerWidth <= 768 && tailoredSection.classList.contains('in-view')) {
-                        //     // Two-layer crossfade: set next, fade it in, then promote to current
-                        //     const FADE_MS = 350;
-                        //     const nextUrl = `url("${targetImage.src}")`;
-                        //     tailoredSection.style.setProperty('--tailored-bg-next', nextUrl);
-                        //     tailoredSection.classList.add('crossfading');
-                        //     tailoredSection.classList.add('image-active');
-                        //     setTimeout(() => {
-                        //         tailoredSection.style.setProperty('--tailored-bg-current', nextUrl);
-                        //         tailoredSection.style.removeProperty('--tailored-bg-next');
-                        //         tailoredSection.classList.remove('crossfading');
-                        //         document.body.classList.add('bg-dark-active');
-                        //     }, FADE_MS);
-                        // }
-                    }
-                }
+        if (prevServiceButton) {
+            prevServiceButton.addEventListener('click', () => {
+                showService(currentServiceIndex - 1);
             });
-        }, observerOptions);
-
-        serviceCards.forEach(card => {
-            observer.observe(card);
-        });
-
-        // Initialize first card as active
-        if (serviceCards[0]) {
-            serviceCards[0].classList.add('active');
-            if (serviceImages[0]) {
-                serviceImages[0].classList.add('active');
-                // Do not set background on init for mobile; wait until highlighted by observer
-            }
         }
 
-        // Disable background image effects on mobile - no resize handler needed
-        // const updateTailoredBackground = () => {
-        //     const tailoredSection = document.querySelector('.tailored-support');
-        //     if (!tailoredSection) return;
-        //     if (window.innerWidth <= 768) {
-        //         const activeImg = document.querySelector('.service-image.active');
-        //         if (activeImg && tailoredSection.classList.contains('in-view')) {
-        //             // If we have no current, set it immediately; else crossfade to it
-        //             const currentHasImage = !!tailoredSection.style.getPropertyValue('--tailored-bg-current');
-        //             const nextUrl = `url("${activeImg.src}")`;
-        //             if (!currentHasImage) {
-        //                 tailoredSection.style.setProperty('--tailored-bg-current', nextUrl);
-        //                 tailoredSection.classList.add('image-active');
-        //                 void document.body.offsetHeight;
-        //                 setTimeout(() => {
-        //                     document.body.classList.add('bg-dark-active');
-        //                 }, 10);
-        //             } else {
-        //                 const FADE_MS = 350;
-        //                 tailoredSection.style.setProperty('--tailored-bg-next', nextUrl);
-        //                 tailoredSection.classList.add('crossfading');
-        //                 tailoredSection.classList.add('image-active');
-        //                 setTimeout(() => {
-        //                     tailoredSection.style.setProperty('--tailored-bg-current', nextUrl);
-        //                     tailoredSection.style.removeProperty('--tailored-bg-next');
-        //                     tailoredSection.classList.remove('crossfading');
-        //                     void document.body.offsetHeight;
-        //                     setTimeout(() => {
-        //                         document.body.classList.add('bg-dark-active');
-        //                     }, 10);
-        //                 }, FADE_MS);
-        //             }
-        //         } else {
-        //             tailoredSection.style.removeProperty('--tailored-bg-current');
-        //             tailoredSection.style.removeProperty('--tailored-bg-next');
-        //             tailoredSection.classList.remove('image-active');
-        //             void document.body.offsetHeight;
-        //             setTimeout(() => {
-        //                 document.body.classList.remove('bg-dark-active');
-        //             }, 10);
-        //         }
-        //     } else {
-        //         tailoredSection.style.removeProperty('--tailored-bg-current');
-        //         tailoredSection.style.removeProperty('--tailored-bg-next');
-        //         tailoredSection.classList.remove('image-active');
-        //         void document.body.offsetHeight;
-        //         setTimeout(() => {
-        //             document.body.classList.remove('bg-dark-active');
-        //         }, 10);
-        //     }
-        // };
+        if (nextServiceButton) {
+            nextServiceButton.addEventListener('click', () => {
+                showService(currentServiceIndex + 1);
+            });
+        }
 
-        // window.addEventListener('resize', updateTailoredBackground);
-        // updateTailoredBackground();
+        if (servicesCarouselWrapper) {
+            servicesCarouselWrapper.addEventListener('keydown', (event) => {
+                if (event.key === 'ArrowLeft') {
+                    event.preventDefault();
+                    showService(currentServiceIndex - 1);
+                }
+                if (event.key === 'ArrowRight') {
+                    event.preventDefault();
+                    showService(currentServiceIndex + 1);
+                }
+            });
+            // Make wrapper focusable for keyboard navigation
+            servicesCarouselWrapper.setAttribute('tabindex', '0');
+        }
+
+        showService(0);
     }
 
 });
