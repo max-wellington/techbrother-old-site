@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Monitor, Wrench, Users, Shield, Clock, Headphones, ChevronRight, Server, Cloud, Lock, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
 import Image from "next/image";
+import Typed from "typed.js";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
