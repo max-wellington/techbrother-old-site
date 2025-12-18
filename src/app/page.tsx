@@ -270,8 +270,13 @@ export default function Home() {
               <Shield className="w-4 h-4" />
               Trusted IT Partner
             </motion.div>
-            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6">
-              <span ref={el} />
+            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 grid">
+              <span className="invisible row-start-1 col-start-1" aria-hidden="true">
+                Transform Your Business
+              </span>
+              <div className="row-start-1 col-start-1 inline-flex items-center">
+                <span ref={el} />
+              </div>
             </motion.h1>
             <motion.p variants={fadeInUp} className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
               We deliver comprehensive managed IT services, expert consulting, and seamless project execution to help your business thrive in the digital age.
@@ -291,25 +296,54 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 bg-white border-y border-border">
+      <section className="py-16 bg-white border-y border-border overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 items-center">
-            <div className="col-span-2 md:col-span-1">
-              <h3 className="text-xl font-bold text-foreground mb-1">Our Impact</h3>
-              <p className="text-sm text-muted-foreground">Measurable results for our clients.</p>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-4xl font-black text-primary tracking-tighter">99.9%</span>
-              <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground/80">System Uptime</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-4xl font-black text-primary tracking-tighter">15m</span>
-              <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground/80">Avg Response</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-4xl font-black text-primary tracking-tighter">10+</span>
-              <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground/80">Years Expertise</span>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+            {[
+              { 
+                step: "01", 
+                title: "Audit", 
+                desc: "Deep analysis of your current infrastructure",
+                icon: Shield
+              },
+              { 
+                step: "02", 
+                title: "Design", 
+                desc: "Tailored strategic technology roadmap",
+                icon: Wrench
+              },
+              { 
+                step: "03", 
+                title: "Deploy", 
+                desc: "Seamless implementation & migration",
+                icon: Server
+              },
+              { 
+                step: "04", 
+                title: "Optimize", 
+                desc: "Continuous 24/7 management & scaling",
+                icon: CheckCircle2
+              }
+            ].map((item, index) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="relative group"
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="text-4xl font-black text-primary/10 group-hover:text-primary/20 transition-colors">
+                    {item.step}
+                  </span>
+                  <div className="h-px flex-1 bg-border" />
+                  <item.icon className="w-5 h-5 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2">{item.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
