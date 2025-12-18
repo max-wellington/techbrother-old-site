@@ -114,9 +114,9 @@ export default function Home() {
         'Drive Innovation',
         'Secure Your Future'
       ],
-      typeSpeed: 25,
-      backSpeed: 15,
-      backDelay: 1000,
+      typeSpeed: 40,
+      backSpeed: 20,
+      backDelay: 1500,
       loop: true,
       showCursor: true,
       cursorChar: '|'
@@ -270,8 +270,13 @@ export default function Home() {
               <Shield className="w-4 h-4" />
               Trusted IT Partner
             </motion.div>
-            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 min-h-[1.2em]">
-              <span ref={el} />
+            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 grid">
+              <span className="invisible row-start-1 col-start-1" aria-hidden="true">
+                Transform Your Business
+              </span>
+              <div className="row-start-1 col-start-1 inline-flex items-center">
+                <span ref={el} />
+              </div>
             </motion.h1>
             <motion.p variants={fadeInUp} className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
               We deliver comprehensive managed IT services, expert consulting, and seamless project execution to help your business thrive in the digital age.
