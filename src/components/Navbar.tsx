@@ -44,6 +44,22 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setMobileServicesOpen(false);
+  }, [pathname]);
+
   // We want the same transparent-to-solid behavior on all pages
   const activeScrolled = scrolled;
   const showWhiteLogo = activeScrolled || !isHome;
