@@ -13,15 +13,29 @@ import Typed from "typed.js";
 import { toast } from "sonner";
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 }
+  transition: { duration: 0.4 }
+};
+
+const fadeInUpMobile = {
+  initial: { opacity: 1, y: 0 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0 }
 };
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
+      staggerChildren: 0.05
+    }
+  }
+};
+
+const staggerContainerMobile = {
+  animate: {
+    transition: {
+      staggerChildren: 0
     }
   }
 };
