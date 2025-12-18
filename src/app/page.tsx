@@ -122,6 +122,7 @@ const healthCheckQuestions = [
 export default function Home() {
   const el = useRef<HTMLSpanElement>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [healthCheckStep, setHealthCheckStep] = useState<"start" | "questions" | "results">("start");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
@@ -143,6 +144,15 @@ export default function Home() {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  useEffect(() => {
+    if (!isMobile) return;
+    const interval = setInterval(() => {
+      setCurrentTextIndex((prev) => (prev + 1) % typedStrings.length);
+      setCurrentImageIndex((prev) => (prev + 1) % typedStrings.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [isMobile]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
