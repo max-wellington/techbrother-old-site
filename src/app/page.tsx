@@ -211,15 +211,19 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background font-sans">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#041324] backdrop-blur-md border-b border-white/10 shadow-lg">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
+        scrolled 
+          ? "bg-[#041324]/95 backdrop-blur-md border-white/10 shadow-lg py-4" 
+          : "bg-white border-border py-5"
+      }`}>
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="relative w-40 h-12">
+            <div className="relative w-40 h-10 transition-all duration-300">
               <Image 
                 src={LOGO_WHITE_URL}
                 alt="TechBrother Logo"
                 fill
-                className="object-contain"
+                className={`object-contain transition-all duration-300 ${scrolled ? "" : "brightness-0"}`}
                 priority
               />
             </div>
@@ -227,7 +231,9 @@ export default function Home() {
           <nav className="hidden md:flex items-center gap-8">
             <div className="relative" ref={dropdownRef} onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
               <button 
-                className="text-white/90 hover:text-white transition-colors font-medium flex items-center gap-1 py-2"
+                className={`transition-colors font-medium flex items-center gap-1 py-2 ${
+                  scrolled ? "text-white/90 hover:text-white" : "text-[#041324]/80 hover:text-[#041324]"
+                }`}
               >
                 Services
                 <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
@@ -238,26 +244,46 @@ export default function Home() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 w-64 bg-[#041324] border border-white/10 rounded-xl shadow-2xl py-3 overflow-hidden"
+                    className={`absolute top-full left-0 w-64 border rounded-xl shadow-2xl py-3 overflow-hidden ${
+                      scrolled ? "bg-[#041324] border-white/10" : "bg-white border-border"
+                    }`}
                   >
                     {services.map((service) => (
                       <Link
                         key={service.href}
                         href={service.href}
-                        className="block px-5 py-3 hover:bg-white/5 transition-colors group"
+                        className={`block px-5 py-3 transition-colors group ${
+                          scrolled ? "hover:bg-white/5" : "hover:bg-[#041324]/5"
+                        }`}
                       >
-                        <div className="text-white font-medium group-hover:text-primary transition-colors">{service.name}</div>
-                        <div className="text-xs text-white/50 group-hover:text-white/70">{service.description}</div>
+                        <div className={`font-medium transition-colors ${
+                          scrolled ? "text-white group-hover:text-primary" : "text-[#041324] group-hover:text-primary"
+                        }`}>{service.name}</div>
+                        <div className={`text-xs ${
+                          scrolled ? "text-white/50 group-hover:text-white/70" : "text-[#041324]/50 group-hover:text-[#041324]/70"
+                        }`}>{service.description}</div>
                       </Link>
                     ))}
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
-            <Link href="#about" className="text-white/90 hover:text-white transition-colors font-medium">About</Link>
-            <Link href="#contact" className="text-white/90 hover:text-white transition-colors font-medium">Contact</Link>
+            <Link href="#about" className={`transition-colors font-medium ${
+              scrolled ? "text-white/90 hover:text-white" : "text-[#041324]/80 hover:text-[#041324]"
+            }`}>About</Link>
+            <Link href="#contact" className={`transition-colors font-medium ${
+              scrolled ? "text-white/90 hover:text-white" : "text-[#041324]/80 hover:text-[#041324]"
+            }`}>Contact</Link>
           </nav>
-          <Button variant="secondary" asChild className="bg-white text-[#041324] hover:bg-white/90">
+          <Button 
+            variant={scrolled ? "secondary" : "default"} 
+            asChild 
+            className={`transition-all duration-300 ${
+              scrolled 
+                ? "bg-white text-[#041324] hover:bg-white/90" 
+                : "bg-[#041324] text-white hover:bg-[#041324]/90"
+            }`}
+          >
             <Link href="#contact">Get Started</Link>
           </Button>
         </div>
