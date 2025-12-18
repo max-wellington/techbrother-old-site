@@ -128,6 +128,7 @@ export default function Home() {
   const [answers, setAnswers] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -135,6 +136,13 @@ export default function Home() {
     company: "",
     message: ""
   });
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
