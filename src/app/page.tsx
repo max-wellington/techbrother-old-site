@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Link from "next/link";
+import Image from "next/image";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -22,21 +23,29 @@ const staggerContainer = {
   }
 };
 
+const LOGO_URL = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/FullLogo_Transparent_NoBuffer-1766035975850.png?width=8000&height=8000&resize=contain";
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-background font-sans">
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-border">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <Server className="w-6 h-6 text-primary-foreground" />
+            <div className="relative w-12 h-12">
+              <Image 
+                src={LOGO_URL}
+                alt="MT IT Services Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-            <span className="text-xl font-bold text-foreground tracking-tight">TechMax</span>
+            <span className="text-xl font-bold text-foreground tracking-tight">MT IT Services</span>
           </Link>
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="#services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
-            <Link href="#about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
-            <Link href="#contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link>
+            <Link href="#services" className="text-muted-foreground hover:text-primary transition-colors font-medium">Services</Link>
+            <Link href="#about" className="text-muted-foreground hover:text-primary transition-colors font-medium">About</Link>
+            <Link href="#contact" className="text-muted-foreground hover:text-primary transition-colors font-medium">Contact</Link>
           </nav>
           <Button variant="default" asChild>
             <Link href="#contact">Get Started</Link>
@@ -98,7 +107,7 @@ export default function Home() {
                 transition={{ delay: index * 0.1 }}
               >
                 <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
-                <div className="text-muted-foreground">{stat.label}</div>
+                <div className="text-muted-foreground font-medium">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -260,9 +269,9 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-bold mb-6">Why Choose TechMax?</h2>
+              <h2 className="text-4xl font-bold mb-6">Why Choose MT IT Services?</h2>
               <p className="text-lg opacity-90 mb-8 leading-relaxed">
-                With over 10 years in the industry, we&apos;ve built a reputation for delivering reliable, innovative IT solutions that drive business success. Our team of certified professionals is committed to being your trusted technology partner.
+                With over 10 years of experience, we&apos;ve built a solid foundation for delivering reliable, innovative IT solutions. We focus on quality and dedicated partnership, currently serving a select group of active clients to ensure personalized attention and excellence.
               </p>
               <div className="grid grid-cols-2 gap-6">
                 {[
@@ -329,8 +338,8 @@ export default function Home() {
                     <Headphones className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">24/7 Support</h3>
-                    <p className="text-muted-foreground">Our team is always available to help you resolve issues quickly.</p>
+                    <h3 className="font-semibold text-foreground mb-1">Expert Support</h3>
+                    <p className="text-muted-foreground">Our experienced team is always available to help you resolve issues quickly.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -403,19 +412,24 @@ export default function Home() {
       <footer className="bg-foreground text-background py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div>
+            <div className="col-span-2">
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                  <Server className="w-6 h-6 text-primary-foreground" />
+                <div className="relative w-12 h-12 brightness-0 invert">
+                  <Image 
+                    src={LOGO_URL}
+                    alt="MT IT Services Logo"
+                    fill
+                    className="object-contain"
+                  />
                 </div>
-                <span className="text-xl font-bold">TechMax</span>
+                <span className="text-xl font-bold">MT IT Services</span>
               </div>
-              <p className="text-background/70">
-                Your trusted partner for managed IT services, projects, and consulting.
+              <p className="text-background/70 max-w-sm">
+                Your trusted partner for managed IT services, projects, and consulting. Currently serving 2 active clients with 10+ years of expertise.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold mb-4">Services</h3>
+              <h3 className="font-semibold mb-4 text-white">Services</h3>
               <ul className="space-y-2 text-background/70">
                 <li><Link href="#services" className="hover:text-background transition-colors">Managed IT</Link></li>
                 <li><Link href="#services" className="hover:text-background transition-colors">One-Off Projects</Link></li>
@@ -423,24 +437,15 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold mb-4">Company</h3>
+              <h3 className="font-semibold mb-4 text-white">Company</h3>
               <ul className="space-y-2 text-background/70">
                 <li><Link href="#about" className="hover:text-background transition-colors">About Us</Link></li>
                 <li><Link href="#contact" className="hover:text-background transition-colors">Contact</Link></li>
-                <li><Link href="#" className="hover:text-background transition-colors">Careers</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4">Contact</h3>
-              <ul className="space-y-2 text-background/70">
-                <li>info@techmax.com</li>
-                <li>(555) 123-4567</li>
-                <li>123 Tech Drive, Suite 100</li>
               </ul>
             </div>
           </div>
           <div className="border-t border-background/20 pt-8 text-center text-background/60">
-            <p>&copy; {new Date().getFullYear()} TechMax. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} MT IT Services. All rights reserved.</p>
           </div>
         </div>
       </footer>
