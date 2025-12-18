@@ -252,7 +252,7 @@ export default function Home() {
               <Shield className="w-4 h-4" />
               Trusted IT Partner
             </motion.div>
-            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 min-h-[150px] md:min-h-[120px]">
+            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 min-h-[220px] sm:min-h-[180px] md:min-h-[160px] lg:min-h-[140px]">
               <span ref={el} />
             </motion.h1>
             <motion.p variants={fadeInUp} className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
