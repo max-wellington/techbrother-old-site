@@ -31,7 +31,7 @@ export default function Home() {
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
               <Server className="w-6 h-6 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold text-foreground tracking-tight">MaxGeneralTech</span>
+            <span className="text-xl font-bold text-foreground tracking-tight">TechMax</span>
           </Link>
           <nav className="hidden md:flex items-center gap-8">
             <Link href="#services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
@@ -260,7 +260,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-bold mb-6">Why Choose MaxGeneralTech?</h2>
+              <h2 className="text-4xl font-bold mb-6">Why Choose TechMax?</h2>
               <p className="text-lg opacity-90 mb-8 leading-relaxed">
                 With over 15 years in the industry, we&apos;ve built a reputation for delivering reliable, innovative IT solutions that drive business success. Our team of certified professionals is committed to being your trusted technology partner.
               </p>
@@ -408,7 +408,7 @@ export default function Home() {
                 <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                   <Server className="w-6 h-6 text-primary-foreground" />
                 </div>
-                <span className="text-xl font-bold">MaxGeneralTech</span>
+                <span className="text-xl font-bold">TechMax</span>
               </div>
               <p className="text-background/70">
                 Your trusted partner for managed IT services, projects, and consulting.
@@ -440,7 +440,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-background/20 pt-8 text-center text-background/60">
-            <p>&copy; {new Date().getFullYear()} MaxGeneralTech. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} TechMax. All rights reserved.</p>
           </div>
         </div>
       </footer>
