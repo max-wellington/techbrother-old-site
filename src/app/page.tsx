@@ -212,14 +212,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background font-sans">
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 border-b ${
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
         scrolled 
-          ? "bg-[#041324]/95 backdrop-blur-md border-white/10 shadow-lg" 
-          : "bg-transparent border-transparent"
-      } py-5`}>
+          ? "bg-[#041324]/95 backdrop-blur-md border-white/10 shadow-lg py-4" 
+          : "bg-transparent border-transparent py-6"
+      }`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="relative w-40 h-10">
+            <div className="relative w-56 h-14">
               <Image 
                 src={scrolled ? LOGO_WHITE_URL : LOGO_BLACK_URL}
                 alt="TechBrother Logo"
@@ -232,8 +232,8 @@ export default function Home() {
           <nav className="hidden md:flex items-center gap-8">
             <div className="relative" ref={dropdownRef} onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
               <button 
-                className={`transition-colors font-medium flex items-center gap-1 py-2 ${
-                  scrolled ? "text-white/90 hover:text-white" : "text-[#041324]/80 hover:text-[#041324]"
+                className={`transition-colors font-semibold flex items-center gap-1 py-2 ${
+                  scrolled ? "text-white/90 hover:text-white" : "text-[#041324] hover:text-primary"
                 }`}
               >
                 Services
@@ -257,7 +257,7 @@ export default function Home() {
                           scrolled ? "hover:bg-white/5" : "hover:bg-[#041324]/5"
                         }`}
                       >
-                        <div className={`font-medium transition-colors ${
+                        <div className={`font-semibold transition-colors ${
                           scrolled ? "text-white group-hover:text-primary" : "text-[#041324] group-hover:text-primary"
                         }`}>{service.name}</div>
                         <div className={`text-xs ${
@@ -269,20 +269,20 @@ export default function Home() {
                 )}
               </AnimatePresence>
             </div>
-            <Link href="#about" className={`transition-colors font-medium ${
-              scrolled ? "text-white/90 hover:text-white" : "text-[#041324]/80 hover:text-[#041324]"
+            <Link href="#about" className={`transition-colors font-semibold ${
+              scrolled ? "text-white/90 hover:text-white" : "text-[#041324] hover:text-primary"
             }`}>About</Link>
-            <Link href="#contact" className={`transition-colors font-medium ${
-              scrolled ? "text-white/90 hover:text-white" : "text-[#041324]/80 hover:text-[#041324]"
+            <Link href="#contact" className={`transition-colors font-semibold ${
+              scrolled ? "text-white/90 hover:text-white" : "text-[#041324] hover:text-primary"
             }`}>Contact</Link>
           </nav>
           <Button 
             variant={scrolled ? "secondary" : "default"} 
             asChild 
-            className={`transition-all duration-300 ${
+            className={`transition-all duration-300 font-bold px-6 h-11 ${
               scrolled 
                 ? "bg-white text-[#041324] hover:bg-white/90" 
-                : "bg-primary text-white hover:bg-primary/90"
+                : "bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20"
             }`}
           >
             <Link href="#contact">Get Started</Link>
