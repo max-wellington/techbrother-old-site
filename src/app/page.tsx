@@ -1,9 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef, FormEvent } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Monitor, Wrench, Users, Shield, Clock, Headphones, ChevronRight, Server, Cloud, Lock, CheckCircle2, XCircle, Search, Zap, ShieldCheck, MapPin, Loader2 } from "lucide-react";
-import { toast } from "sonner";
+import { Monitor, Wrench, Users, Shield, Clock, Headphones, ChevronRight, Server, Cloud, Lock, CheckCircle2, XCircle, Search, Zap, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -27,11 +26,10 @@ const staggerContainer = {
 };
 
 const heroImages = [
-  "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2340&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2340&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2344&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2340&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop"
+  "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2340&auto=format&fit=crop"
 ];
 
 const healthCheckQuestions = [
@@ -104,7 +102,6 @@ export default function Home() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
-  const [formLoading, setFormLoading] = useState(false);
 
   useEffect(() => {
     if (!el.current) return;
@@ -195,40 +192,6 @@ export default function Home() {
 
   const scoreInfo = getScoreInfo(totalScore);
 
-  const handleContactSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setFormLoading(true);
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const data = {
-      firstName: formData.get("firstName") as string,
-      lastName: formData.get("lastName") as string,
-      email: formData.get("email") as string,
-      company: formData.get("company") as string,
-      message: formData.get("message") as string,
-    };
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        toast.success("Message sent! We'll get back to you within 24 hours.");
-        form.reset();
-      } else {
-        toast.error("Failed to send message. Please try again.");
-      }
-    } catch {
-      toast.error("An error occurred. Please try again.");
-    } finally {
-      setFormLoading(false);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-background font-sans">
       <section className="relative pt-32 pb-24 overflow-hidden">
@@ -245,8 +208,8 @@ export default function Home() {
               className="max-w-3xl"
             >
               <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-                <MapPin className="w-4 h-4" />
-                Based in Tampa
+                <Shield className="w-4 h-4" />
+                Trusted Tampa IT Partner
               </motion.div>
               <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 w-fit min-h-[1.2em]">
                 <span ref={el} />
@@ -409,7 +372,7 @@ export default function Home() {
                     <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                       <Wrench className="w-7 h-7 text-primary" />
                     </div>
-                    <CardTitle className="text-2xl">One-Off Projects</CardTitle>
+                    <CardTitle className="text-2xl">One-Off IT Projects</CardTitle>
                     <CardDescription className="text-base">
                       Expert execution for your specific IT initiatives
                     </CardDescription>
@@ -718,31 +681,31 @@ export default function Home() {
                   <CardDescription>Fill out the form below and we&apos;ll get back to you within 24 hours.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form className="space-y-4" onSubmit={handleContactSubmit}>
+                  <form className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <label className="text-sm font-medium text-foreground mb-2 block">First Name</label>
-                        <Input name="firstName" placeholder="John" className="focus-visible:ring-primary/20" required />
+                        <Input placeholder="John" className="focus-visible:ring-primary/20" />
                       </div>
                       <div>
                         <label className="text-sm font-medium text-foreground mb-2 block">Last Name</label>
-                        <Input name="lastName" placeholder="Doe" className="focus-visible:ring-primary/20" required />
+                        <Input placeholder="Doe" className="focus-visible:ring-primary/20" />
                       </div>
                     </div>
                     <div>
                       <label className="text-sm font-medium text-foreground mb-2 block">Email</label>
-                      <Input name="email" type="email" placeholder="john@company.com" className="focus-visible:ring-primary/20" required />
+                      <Input type="email" placeholder="john@company.com" className="focus-visible:ring-primary/20" />
                     </div>
                     <div>
                       <label className="text-sm font-medium text-foreground mb-2 block">Company</label>
-                      <Input name="company" placeholder="Company Name" className="focus-visible:ring-primary/20" />
+                      <Input placeholder="Company Name" className="focus-visible:ring-primary/20" />
                     </div>
                     <div>
                       <label className="text-sm font-medium text-foreground mb-2 block">Message</label>
-                      <Textarea name="message" placeholder="Tell us about your IT needs..." rows={4} className="focus-visible:ring-primary/20" required />
+                      <Textarea placeholder="Tell us about your IT needs..." rows={4} className="focus-visible:ring-primary/20" />
                     </div>
-                    <Button type="submit" variant="default" className="w-full bg-primary hover:bg-primary/90" size="lg" disabled={formLoading}>
-                      {formLoading ? <><Loader2 className="w-4 h-4 mr-2 animate-spin" />Sending...</> : "Send Message"}
+                    <Button type="submit" variant="default" className="w-full bg-primary hover:bg-primary/90" size="lg">
+                      Send Message
                     </Button>
                   </form>
                 </CardContent>
