@@ -190,7 +190,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background font-sans">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-foreground/95 backdrop-blur-md border-b border-white/10 shadow-lg">
+      <      header className="fixed top-0 left-0 right-0 z-50 bg-[#1B76DE] backdrop-blur-md border-b border-white/10 shadow-lg">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <div className="relative w-16 h-12">
