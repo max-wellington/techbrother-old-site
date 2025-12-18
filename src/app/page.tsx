@@ -270,13 +270,8 @@ export default function Home() {
               <Shield className="w-4 h-4" />
               Trusted IT Partner
             </motion.div>
-            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 grid">
-              <span className="invisible row-start-1 col-start-1" aria-hidden="true">
-                Transform Your Business
-              </span>
-              <div className="row-start-1 col-start-1 inline-flex items-center">
-                <span ref={el} />
-              </div>
+            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 w-fit">
+              <span ref={el} />
             </motion.h1>
             <motion.p variants={fadeInUp} className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
               We deliver comprehensive managed IT services, expert consulting, and seamless project execution to help your business thrive in the digital age.
@@ -296,54 +291,36 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 bg-white border-y border-border overflow-hidden">
+      <section className="py-20 bg-white border-y border-border">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-            {[
-              { 
-                step: "01", 
-                title: "Audit", 
-                desc: "Deep analysis of your current infrastructure",
-                icon: Shield
-              },
-              { 
-                step: "02", 
-                title: "Design", 
-                desc: "Tailored strategic technology roadmap",
-                icon: Wrench
-              },
-              { 
-                step: "03", 
-                title: "Deploy", 
-                desc: "Seamless implementation & migration",
-                icon: Server
-              },
-              { 
-                step: "04", 
-                title: "Optimize", 
-                desc: "Continuous 24/7 management & scaling",
-                icon: CheckCircle2
-              }
-            ].map((item, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative group"
-              >
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="text-4xl font-black text-primary/10 group-hover:text-primary/20 transition-colors">
-                    {item.step}
-                  </span>
-                  <div className="h-px flex-1 bg-border" />
-                  <item.icon className="w-5 h-5 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-2">{item.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div className="flex flex-col gap-5">
+              <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center">
+                <Search className="w-7 h-7 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-foreground mb-2">Strategic Discovery</h3>
+                <p className="text-muted-foreground leading-relaxed">We conduct deep-tier audits to uncover hidden vulnerabilities and identify opportunities for optimization.</p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-5">
+              <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center">
+                <Zap className="w-7 h-7 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-foreground mb-2">Seamless Integration</h3>
+                <p className="text-muted-foreground leading-relaxed">Our implementation phase ensures zero-downtime migrations and enterprise-grade deployment of new tech.</p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-5">
+              <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center">
+                <ShieldCheck className="w-7 h-7 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-foreground mb-2">Adaptive Management</h3>
+                <p className="text-muted-foreground leading-relaxed">Continuous 24/7 monitoring and proactive maintenance keep your infrastructure resilient and future-proof.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
