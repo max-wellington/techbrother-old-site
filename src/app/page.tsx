@@ -274,7 +274,9 @@ export default function Home() {
               <span className="invisible row-start-1 col-start-1" aria-hidden="true">
                 Transform Your Business<span className="opacity-0">|</span>
               </span>
-              <span className="row-start-1 col-start-1" ref={el} />
+              <div className="row-start-1 col-start-1">
+                <span ref={el} />
+              </div>
             </motion.h1>
             <motion.p variants={fadeInUp} className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
               We deliver comprehensive managed IT services, expert consulting, and seamless project execution to help your business thrive in the digital age.
