@@ -85,10 +85,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { value: "500+", label: "Clients Served" },
+              { value: "2", label: "Active Clients" },
               { value: "99.9%", label: "Uptime Guaranteed" },
               { value: "24/7", label: "Support Available" },
-              { value: "15+", label: "Years Experience" }
+              { value: "10+", label: "Years Experience" }
             ].map((stat, index) => (
               <motion.div 
                 key={index}
@@ -97,7 +97,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
+                <div className="text-4xl font-bold text-orange mb-2">{stat.value}</div>
                 <div className="text-muted-foreground">{stat.label}</div>
               </motion.div>
             ))}
