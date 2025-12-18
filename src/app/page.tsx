@@ -214,7 +214,7 @@ export default function Home() {
     <div className="min-h-screen bg-background font-sans">
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
         scrolled 
-          ? "bg-[#041324]/95 backdrop-blur-md border-white/10 shadow-lg py-4" 
+          ? "bg-[#041324]/95 backdrop-blur-md border-white/10 shadow-lg py-5" 
           : "bg-white border-transparent py-5"
       }`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
