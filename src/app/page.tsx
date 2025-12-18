@@ -305,6 +305,19 @@ export default function Home() {
                         priority
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#041324]/40 to-transparent" />
+                      
+                      <div className="absolute inset-0 flex items-center justify-center p-8">
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          key={`overlay-${currentImageIndex}`}
+                          className="bg-black/30 backdrop-blur-md border border-white/20 p-6 rounded-xl max-w-xs text-center"
+                        >
+                          <p className="text-white text-xl md:text-2xl font-bold leading-tight">
+                            {typedStrings[currentImageIndex]}
+                          </p>
+                        </motion.div>
+                      </div>
                     </motion.div>
                   </AnimatePresence>
                 </div>
