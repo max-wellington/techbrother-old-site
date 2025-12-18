@@ -387,10 +387,10 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0 }}
+              transition={{ duration: isMobile ? 0 : 0.4, delay: 0 }}
             >
               <Link href="/services/managed-it">
                 <Card className="h-full border-2 hover:border-primary/50 transition-colors group cursor-pointer">
