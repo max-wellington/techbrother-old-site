@@ -153,9 +153,16 @@ export default function Navbar() {
         </button>
       </div>
 
-      {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-[88px] bg-[#041324] z-40">
-          <nav className="flex flex-col p-6 space-y-2">
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden fixed inset-0 top-0 bg-[#041324] z-40 pt-24"
+            >
+              <nav className="flex flex-col p-6 space-y-2">
             <div>
               <button
                 onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
