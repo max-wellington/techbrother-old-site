@@ -4,6 +4,8 @@ import "./globals.css";
 import { VisualEditsMessenger } from "orchids-visual-edits";
 import ErrorReporter from "@/components/ErrorReporter";
 import Script from "next/script";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
