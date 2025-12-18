@@ -701,14 +701,15 @@ export default function Home() {
 
       <section id="contact" className="py-24">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: isMobile ? 0 : 0.4 }}
             >
-              <h2 className="text-4xl font-bold text-foreground mb-4">Let&apos;s Talk Technology</h2>
-              <p className="text-xl text-muted-foreground mb-8">
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Let&apos;s Talk Technology</h2>
+              <p className="text-lg sm:text-xl text-muted-foreground mb-8">
                 Ready to transform your IT operations? Get in touch with our team to discuss your needs.
               </p>
               <div className="space-y-6">
