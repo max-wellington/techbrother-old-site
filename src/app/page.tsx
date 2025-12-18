@@ -274,36 +274,36 @@ export default function Home() {
             <motion.div 
               initial="initial"
               animate="animate"
-              variants={staggerContainer}
+              variants={isMobile ? staggerContainerMobile : staggerContainer}
               className="max-w-3xl"
             >
-              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <motion.div variants={isMobile ? fadeInUpMobile : fadeInUp} className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
                 <Shield className="w-4 h-4" />
                 Trusted Tampa IT Partner
               </motion.div>
-              <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 w-fit min-h-[1.2em]">
+              <motion.h1 variants={isMobile ? fadeInUpMobile : fadeInUp} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 w-fit min-h-[1.2em]">
                 <span ref={el} />
               </motion.h1>
-              <motion.p variants={fadeInUp} className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+              <motion.p variants={isMobile ? fadeInUpMobile : fadeInUp} className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
                 We deliver comprehensive managed IT services, expert consulting, and seamless project execution to help your business thrive in the digital age.
               </motion.p>
-              <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
-                <Button size="lg" variant="default" asChild className="gap-2 bg-primary hover:bg-primary/90">
+              <motion.div variants={isMobile ? fadeInUpMobile : fadeInUp} className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" variant="default" asChild className="gap-2 bg-primary hover:bg-primary/90 w-full sm:w-auto">
                   <Link href="#contact">
                     Schedule Consultation
                     <ChevronRight className="w-4 h-4" />
                   </Link>
                 </Button>
-                <Button size="lg" variant="outline" asChild className="border-primary/20 hover:bg-primary/5 text-primary">
+                <Button size="lg" variant="outline" asChild className="border-primary/20 hover:bg-primary/5 text-primary w-full sm:w-auto">
                   <Link href="#services">Explore Services</Link>
                 </Button>
               </motion.div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: isMobile ? 0 : 0.6, delay: isMobile ? 0 : 0.1 }}
               className="relative hidden lg:block"
             >
               <div className="relative w-full aspect-square max-w-xl mx-auto">
