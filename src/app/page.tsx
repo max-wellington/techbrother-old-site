@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Monitor, Wrench, Users, Shield, Clock, Headphones, ChevronRight, ChevronDown, Server, Cloud, Lock, CheckCircle2, XCircle, Search, Zap, ShieldCheck } from "lucide-react";
+import { Monitor, Wrench, Users, Shield, Clock, Headphones, ChevronRight, Server, Cloud, Lock, CheckCircle2, XCircle, Search, Zap, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -25,20 +25,11 @@ const staggerContainer = {
   }
 };
 
-const LOGO_WHITE_URL = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/logo-white-1766092584771.png?width=8000&height=8000&resize=contain";
-const LOGO_BLACK_URL = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/logo-black-1766089816039.png?width=8000&height=8000&resize=contain";
-
 const heroImages = [
   "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2340&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2344&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2340&auto=format&fit=crop"
-];
-
-const services = [
-  { name: "Managed IT Services", href: "/services/managed-it", description: "Seamless business operations" },
-  { name: "One-Off Projects", href: "/services/one-off-projects", description: "Expert initiative execution" },
-  { name: "IT Consulting", href: "/services/it-consulting", description: "Strategic technology alignment" },
 ];
 
 const healthCheckQuestions = [
@@ -111,17 +102,6 @@ export default function Home() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     if (!el.current) return;
@@ -146,16 +126,6 @@ export default function Home() {
     return () => {
       typed.destroy();
     };
-  }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setServicesOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const startHealthCheck = () => {
@@ -223,84 +193,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background font-sans">
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
-        scrolled 
-          ? "bg-[#041324]/95 backdrop-blur-md border-white/10 shadow-lg" 
-          : "bg-transparent border-transparent"
-      } py-5`}>
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="relative w-56 h-14">
-              <Image 
-                src={scrolled ? LOGO_WHITE_URL : LOGO_BLACK_URL}
-                alt="TechBrother Logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-          </Link>
-          <nav className="hidden md:flex items-center gap-8">
-            <div className="relative" ref={dropdownRef} onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
-              <button 
-                className={`transition-colors font-semibold flex items-center gap-1 py-2 ${
-                  scrolled ? "text-white/90 hover:text-white" : "text-[#041324] hover:text-primary"
-                }`}
-              >
-                Services
-                <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
-              </button>
-              <AnimatePresence>
-                {servicesOpen && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className={`absolute top-full left-0 w-64 border rounded-xl shadow-2xl py-3 overflow-hidden ${
-                      scrolled ? "bg-[#041324] border-white/10" : "bg-white border-border"
-                    }`}
-                  >
-                    {services.map((service) => (
-                      <Link
-                        key={service.href}
-                        href={service.href}
-                        className={`block px-5 py-3 transition-colors group ${
-                          scrolled ? "hover:bg-white/5" : "hover:bg-[#041324]/5"
-                        }`}
-                      >
-                        <div className={`font-semibold transition-colors ${
-                          scrolled ? "text-white group-hover:text-primary" : "text-[#041324] group-hover:text-primary"
-                        }`}>{service.name}</div>
-                        <div className={`text-xs ${
-                          scrolled ? "text-white/50 group-hover:text-white/70" : "text-[#041324]/50 group-hover:text-[#041324]/70"
-                        }`}>{service.description}</div>
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-            <Link href="#about" className={`transition-colors font-semibold ${
-              scrolled ? "text-white/90 hover:text-white" : "text-[#041324] hover:text-primary"
-            }`}>About</Link>
-            <Link href="#contact" className={`transition-colors font-semibold ${
-              scrolled ? "text-white/90 hover:text-white" : "text-[#041324] hover:text-primary"
-            }`}>Contact</Link>
-          </nav>
-          <Button 
-            variant={scrolled ? "secondary" : "default"} 
-            asChild 
-            className={`transition-all duration-300 font-bold px-6 h-11 ${
-              scrolled 
-                ? "bg-white text-[#041324] hover:bg-white/90" 
-                : "bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20"
-            }`}
-          >
-            <Link href="#contact">Get Started</Link>
-          </Button>
-        </div>
-      </header>
-
       <section className="relative pt-32 pb-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
         <div className="absolute top-20 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
@@ -821,46 +713,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <footer className="bg-[#041324] text-white py-16 border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div className="col-span-2">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="relative w-72 h-24">
-                    <Image 
-                      src={LOGO_WHITE_URL}
-                      alt="TechBrother Logo"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-              <p className="text-white/70 max-w-sm">
-                Your trusted partner for managed IT services, projects, and consulting. Currently serving a select group of clients with 10+ years of expertise.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-white">Services</h3>
-              <ul className="space-y-2 text-white/70">
-                <li><Link href="/services/managed-it" className="hover:text-primary transition-colors">Managed IT</Link></li>
-                <li><Link href="/services/one-off-projects" className="hover:text-primary transition-colors">One-Off Projects</Link></li>
-                <li><Link href="/services/it-consulting" className="hover:text-primary transition-colors">Consulting</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-white">Company</h3>
-              <ul className="space-y-2 text-white/70">
-                <li><Link href="#about" className="hover:text-primary transition-colors">About Us</Link></li>
-                <li><Link href="#contact" className="hover:text-primary transition-colors">Contact</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-white/10 pt-8 text-center text-white/60">
-            <p>&copy; {new Date().getFullYear()} TechBrother. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
