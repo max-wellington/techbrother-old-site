@@ -744,10 +744,10 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              transition={{ duration: isMobile ? 0 : 0.4, delay: isMobile ? 0 : 0.1 }}
             >
               <Card className="border-2 shadow-sm min-h-[500px] flex flex-col justify-center overflow-hidden">
                 <AnimatePresence mode="wait">
