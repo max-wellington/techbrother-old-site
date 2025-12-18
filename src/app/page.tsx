@@ -477,10 +477,10 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
+              transition={{ duration: isMobile ? 0 : 0.4, delay: isMobile ? 0 : 0.2 }}
             >
               <Link href="/services/it-consulting">
                 <Card className="h-full border-2 hover:border-primary/50 transition-colors group cursor-pointer">
