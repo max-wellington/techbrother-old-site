@@ -724,31 +724,75 @@ export default function Home() {
                   <CardDescription>Fill out the form below and we&apos;ll get back to you within 24 hours.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form className="space-y-4">
+                  <form className="space-y-4" onSubmit={handleSubmit}>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <label className="text-sm font-medium text-foreground mb-2 block">First Name</label>
-                        <Input placeholder="John" className="focus-visible:ring-primary/20" />
+                        <Input 
+                          required
+                          value={formData.firstName}
+                          onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                          placeholder="John" 
+                          className="focus-visible:ring-primary/20" 
+                        />
                       </div>
                       <div>
                         <label className="text-sm font-medium text-foreground mb-2 block">Last Name</label>
-                        <Input placeholder="Doe" className="focus-visible:ring-primary/20" />
+                        <Input 
+                          required
+                          value={formData.lastName}
+                          onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                          placeholder="Doe" 
+                          className="focus-visible:ring-primary/20" 
+                        />
                       </div>
                     </div>
                     <div>
                       <label className="text-sm font-medium text-foreground mb-2 block">Email</label>
-                      <Input type="email" placeholder="john@company.com" className="focus-visible:ring-primary/20" />
+                      <Input 
+                        required
+                        type="email" 
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="john@company.com" 
+                        className="focus-visible:ring-primary/20" 
+                      />
                     </div>
                     <div>
                       <label className="text-sm font-medium text-foreground mb-2 block">Company</label>
-                      <Input placeholder="Company Name" className="focus-visible:ring-primary/20" />
+                      <Input 
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        placeholder="Company Name" 
+                        className="focus-visible:ring-primary/20" 
+                      />
                     </div>
                     <div>
                       <label className="text-sm font-medium text-foreground mb-2 block">Message</label>
-                      <Textarea placeholder="Tell us about your IT needs..." rows={4} className="focus-visible:ring-primary/20" />
+                      <Textarea 
+                        required
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        placeholder="Tell us about your IT needs..." 
+                        rows={4} 
+                        className="focus-visible:ring-primary/20" 
+                      />
                     </div>
-                    <Button type="submit" variant="default" className="w-full bg-primary hover:bg-primary/90" size="lg">
-                      Send Message
+                    <Button 
+                      type="submit" 
+                      variant="default" 
+                      className="w-full bg-primary hover:bg-primary/90" 
+                      size="lg"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        "Send Message"
+                      )}
                     </Button>
                   </form>
                 </CardContent>
