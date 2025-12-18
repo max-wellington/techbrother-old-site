@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TechMax - Managed IT Services & Consulting",
+  title: "TechBrother - Managed IT Services & Consulting",
   description: "Empowering your business through reliable managed IT services, expert consulting, and innovative projects.",
 };
 
