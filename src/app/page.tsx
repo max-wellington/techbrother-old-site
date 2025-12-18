@@ -783,7 +783,7 @@ export default function Home() {
                 <div className="flex items-center gap-2 mb-4">
                   <div className="relative w-40 h-16">
                     <Image 
-                      src={LOGO_BLACK_URL}
+                      src={LOGO_WHITE_URL}
                       alt="TechBrother Logo"
                       fill
                       className="object-contain"
