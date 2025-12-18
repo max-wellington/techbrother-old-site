@@ -538,7 +538,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl font-bold mb-6">Why Choose TechMax IT Services?</h2>
+              <h2 className="text-4xl font-bold mb-6">Why Choose TechBrother?</h2>
               <p className="text-lg opacity-90 mb-8 leading-relaxed">
                 With over 10 years of experience, we&apos;ve built a solid foundation for delivering reliable, innovative IT solutions. We focus on quality and dedicated partnership, currently serving a select group of active clients to ensure personalized attention and excellence.
               </p>
