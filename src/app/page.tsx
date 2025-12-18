@@ -225,23 +225,23 @@ export default function Home() {
                 <CardContent>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
                       Technology Roadmapping
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
                       Vendor Selection
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
                       Budget Planning
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
                       Compliance Guidance
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
                       Digital Transformation
                     </li>
                   </ul>
