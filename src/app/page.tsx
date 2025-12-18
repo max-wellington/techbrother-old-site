@@ -389,7 +389,7 @@ export default function Home() {
                       <label className="text-sm font-medium text-foreground mb-2 block">Message</label>
                       <Textarea placeholder="Tell us about your IT needs..." rows={4} />
                     </div>
-                    <Button type="submit" className="w-full" size="lg">
+                    <Button type="submit" variant="orange" className="w-full" size="lg">
                       Send Message
                     </Button>
                   </form>
