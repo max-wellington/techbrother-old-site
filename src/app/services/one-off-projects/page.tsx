@@ -90,17 +90,17 @@ export default function OneOffProjectsPage() {
     <div className="min-h-screen bg-background font-sans">
       <header className="fixed top-0 left-0 right-0 z-50 bg-[#041324] backdrop-blur-md border-b border-white/10 shadow-lg">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="relative w-40 h-12">
-              <Image 
-                src={LOGO_WHITE_URL}
-                alt="TechBrother Logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-          </Link>
+            <Link href="/" className="flex items-center gap-2">
+              <div className="relative w-56 h-14">
+                <Image 
+                  src={LOGO_WHITE_URL}
+                  alt="TechBrother Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </Link>
           <nav className="hidden md:flex items-center gap-8">
             <div className="relative" ref={dropdownRef} onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
               <button 
