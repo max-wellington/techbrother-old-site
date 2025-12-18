@@ -110,7 +110,7 @@ export default function Home() {
         'Optimize Your IT',
         'Streamline Operations',
         'Drive Growth',
-        'Secure Yourself & Your Customers',
+        'Secure Yourself and Your Customers',
         'Transform Your Businesses'
       ],
       typeSpeed: 40,
