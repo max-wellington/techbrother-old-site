@@ -26,10 +26,11 @@ const staggerContainer = {
 };
 
 const heroImages = [
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
+  "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/81898e11-2249-45ea-ad62-34f05a08012c-1766093341919.png?width=8000&height=8000&resize=contain",
   "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2340&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2344&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2340&auto=format&fit=crop"
+  "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2340&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop"
 ];
 
 const healthCheckQuestions = [
