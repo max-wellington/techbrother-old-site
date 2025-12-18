@@ -133,7 +133,7 @@ export default function Navbar() {
         <Button 
           variant={buttonVariant} 
           asChild 
-          className={`transition-all duration-300 font-bold px-6 h-11 ${
+          className={`hidden md:inline-flex transition-all duration-300 font-bold px-6 h-11 ${
             (activeScrolled || !isHome)
               ? "bg-white text-[#041324] hover:bg-white/90" 
               : "bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20"
@@ -141,7 +141,70 @@ export default function Navbar() {
         >
           <Link href="/#contact">Get Started</Link>
         </Button>
+
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className={`md:hidden p-2 rounded-lg transition-colors ${
+            (activeScrolled || !isHome) ? "text-white hover:bg-white/10" : "text-[#041324] hover:bg-[#041324]/10"
+          }`}
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+        >
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
       </div>
+
+      {mobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 top-[88px] bg-[#041324] z-40">
+          <nav className="flex flex-col p-6 space-y-2">
+            <div>
+              <button
+                onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                className="w-full flex items-center justify-between py-4 text-white font-semibold text-lg border-b border-white/10"
+              >
+                Services
+                <ChevronDown className={`w-5 h-5 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`} />
+              </button>
+              {mobileServicesOpen && (
+                <div className="py-2 pl-4 space-y-1">
+                  {services.map((service) => (
+                    <Link
+                      key={service.href}
+                      href={service.href}
+                      className="block py-3 text-white/80 hover:text-white transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <div className="font-medium">{service.name}</div>
+                      <div className="text-sm text-white/50">{service.description}</div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+            <Link
+              href="/#about"
+              className="py-4 text-white font-semibold text-lg border-b border-white/10"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              About
+            </Link>
+            <Link
+              href="/#contact"
+              className="py-4 text-white font-semibold text-lg border-b border-white/10"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contact
+            </Link>
+            <div className="pt-6">
+              <Button 
+                asChild 
+                className="w-full bg-white text-[#041324] hover:bg-white/90 font-bold h-12 text-base"
+              >
+                <Link href="/#contact" onClick={() => setMobileMenuOpen(false)}>Get Started</Link>
+              </Button>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
