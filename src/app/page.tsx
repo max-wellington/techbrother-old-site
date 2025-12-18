@@ -215,16 +215,16 @@ export default function Home() {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
         scrolled 
           ? "bg-[#041324]/95 backdrop-blur-md border-white/10 shadow-lg py-4" 
-          : "bg-white border-border py-5"
+          : "bg-white border-transparent py-5"
       }`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <div className="relative w-40 h-10 transition-all duration-300">
               <Image 
-                src={LOGO_WHITE_URL}
+                src={scrolled ? LOGO_WHITE_URL : LOGO_BLACK_URL}
                 alt="TechBrother Logo"
                 fill
-                className={`object-contain transition-all duration-300 ${scrolled ? "" : "brightness-0"}`}
+                className="object-contain transition-all duration-300"
                 priority
               />
             </div>
@@ -282,7 +282,7 @@ export default function Home() {
             className={`transition-all duration-300 ${
               scrolled 
                 ? "bg-white text-[#041324] hover:bg-white/90" 
-                : "bg-[#041324] text-white hover:bg-[#041324]/90"
+                : "bg-primary text-white hover:bg-primary/90"
             }`}
           >
             <Link href="#contact">Get Started</Link>
