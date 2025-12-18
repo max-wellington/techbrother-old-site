@@ -272,10 +272,10 @@ export default function Home() {
             </motion.div>
             <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 grid">
               <span className="invisible row-start-1 col-start-1" aria-hidden="true">
-                Transform Your Business<span className="opacity-0">|</span>
+                Transform Your Business
               </span>
-              <div className="row-start-1 col-start-1">
-                <span ref={el} />
+              <div className="row-start-1 col-start-1 flex items-center">
+                <span ref={el} className="inline" />
               </div>
             </motion.h1>
             <motion.p variants={fadeInUp} className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
