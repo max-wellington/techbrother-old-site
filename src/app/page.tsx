@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Monitor, Wrench, Users, Shield, Clock, Headphones, ChevronRight, ChevronDown, Server, Cloud, Lock, CheckCircle2, XCircle } from "lucide-react";
+import { Monitor, Wrench, Users, Shield, Clock, Headphones, ChevronRight, ChevronDown, Server, Cloud, Lock, CheckCircle2, XCircle, Search, Zap, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
