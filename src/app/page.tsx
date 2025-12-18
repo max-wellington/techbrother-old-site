@@ -640,13 +640,14 @@ export default function Home() {
 
       <section id="about" className="py-24 bg-[#041324] text-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
+              initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: isMobile ? 0 : 0.4 }}
             >
-              <h2 className="text-4xl font-bold mb-6">Why Choose TechBrother?</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-6">Why Choose TechBrother?</h2>
               <p className="text-lg opacity-90 mb-8 leading-relaxed">
                 With over 10 years of experience, we&apos;ve built a solid foundation for delivering reliable, innovative IT solutions. We focus on quality and dedicated partnership, currently serving a select group of active clients to ensure personalized attention and excellence.
               </p>
