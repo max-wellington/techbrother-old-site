@@ -685,7 +685,7 @@ export default function Home() {
                 <div className="relative w-20 h-16 brightness-0 invert">
                   <Image 
                     src={LOGO_URL}
-                    alt="MT IT Services Logo"
+                    alt="TechMax IT Services Logo"
                     fill
                     className="object-contain"
                   />
@@ -712,7 +712,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-background/20 pt-8 text-center text-background/60">
-            <p>&copy; {new Date().getFullYear()} MT IT Services. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} TechMax IT Services. All rights reserved.</p>
           </div>
         </div>
       </footer>
