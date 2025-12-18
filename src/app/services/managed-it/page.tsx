@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
 
-const LOGO_WHITE_URL = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/logo-white-1766041724713.png?width=8000&height=8000&resize=contain";
+const LOGO_WHITE_URL = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/logo-white-1766159620785.png?width=8000&height=8000&resize=contain";
 
 const services = [
   { name: "Managed IT Services", href: "/services/managed-it", description: "Seamless business operations" },
