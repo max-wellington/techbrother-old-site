@@ -514,7 +514,7 @@ export default function Home() {
                         <Button size="lg" variant="secondary" asChild className="font-bold">
                           <Link href="#contact">Schedule Consultation</Link>
                         </Button>
-                        <Button size="lg" variant="outline" onClick={startHealthCheck} className="text-white border-white hover:bg-white/10 bg-transparent">
+                        <Button size="lg" variant="ghost" onClick={startHealthCheck} className="text-white border border-white hover:bg-white/10 bg-transparent">
                           Retake Assessment
                         </Button>
                       </div>
