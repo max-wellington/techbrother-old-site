@@ -98,6 +98,7 @@ export default function Home() {
   const [answers, setAnswers] = useState<string[]>([]);
 
   useEffect(() => {
+    if (!el.current) return;
     const typed = new Typed(el.current, {
       strings: [
         'Transform Your Business',
