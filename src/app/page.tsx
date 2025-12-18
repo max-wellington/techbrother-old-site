@@ -195,6 +195,40 @@ export default function Home() {
 
   const scoreInfo = getScoreInfo(totalScore);
 
+  const handleContactSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormLoading(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data = {
+      firstName: formData.get("firstName") as string,
+      lastName: formData.get("lastName") as string,
+      email: formData.get("email") as string,
+      company: formData.get("company") as string,
+      message: formData.get("message") as string,
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        toast.success("Message sent! We'll get back to you within 24 hours.");
+        form.reset();
+      } else {
+        toast.error("Failed to send message. Please try again.");
+      }
+    } catch {
+      toast.error("An error occurred. Please try again.");
+    } finally {
+      setFormLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background font-sans">
       <section className="relative pt-32 pb-24 overflow-hidden">
