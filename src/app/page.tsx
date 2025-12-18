@@ -139,23 +139,23 @@ export default function Home() {
                 <CardContent>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
                       24/7 Network Monitoring
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
                       Proactive Maintenance
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
                       Help Desk Support
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
                       Security Management
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
                       Backup & Recovery
                     </li>
                   </ul>
