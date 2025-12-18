@@ -25,7 +25,8 @@ const staggerContainer = {
   }
 };
 
-const LOGO_URL = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/FullLogo_Transparent_NoBuffer-1766035975850.png?width=8000&height=8000&resize=contain";
+const LOGO_WHITE_URL = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/logo-white-1766041724713.png?width=8000&height=8000&resize=contain";
+const LOGO_BLACK_URL = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/logo-black-1766041726773.png?width=8000&height=8000&resize=contain";
 
 const healthCheckQuestions = [
   {
