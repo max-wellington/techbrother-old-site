@@ -677,7 +677,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-[#1B76DE] text-background py-16">
+      <footer className="bg-[#041324] text-background py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-2">
