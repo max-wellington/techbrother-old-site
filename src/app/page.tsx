@@ -91,10 +91,32 @@ const healthCheckQuestions = [
 ];
 
 export default function Home() {
+  const el = useRef<HTMLSpanElement>(null);
   const [healthCheckStep, setHealthCheckStep] = useState<"start" | "questions" | "results">("start");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
+
+  useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: [
+        'Transform Your Business',
+        'Optimize Your IT',
+        'Drive Innovation',
+        'Secure Your Future'
+      ],
+      typeSpeed: 80,
+      backSpeed: 40,
+      backDelay: 2000,
+      loop: true,
+      showCursor: true,
+      cursorChar: '|'
+    });
+
+    return () => {
+      typed.destroy();
+    };
+  }, []);
 
   const startHealthCheck = () => {
     setHealthCheckStep("questions");
