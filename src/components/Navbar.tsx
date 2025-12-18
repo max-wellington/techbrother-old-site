@@ -201,17 +201,18 @@ export default function Navbar() {
             >
               Contact
             </Link>
-            <div className="pt-6">
-              <Button 
-                asChild 
-                className="w-full bg-white text-[#041324] hover:bg-white/90 font-bold h-12 text-base"
-              >
-                <Link href="/#contact" onClick={() => setMobileMenuOpen(false)}>Get Started</Link>
-              </Button>
-            </div>
-          </nav>
-        </div>
-      )}
-    </header>
+              <div className="pt-6">
+                <Button 
+                  asChild 
+                  className="w-full bg-white text-[#041324] hover:bg-white/90 font-bold h-12 text-base"
+                >
+                  <Link href="/#contact" onClick={() => setMobileMenuOpen(false)}>Get Started</Link>
+                </Button>
+              </div>
+            </nav>
+          </motion.div>
+        )}
+        </AnimatePresence>
+      </header>
   );
 }
