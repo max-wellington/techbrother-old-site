@@ -34,11 +34,11 @@ export default function Home() {
             <span className="text-xl font-bold text-foreground tracking-tight">TechMax</span>
           </Link>
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="#services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
-            <Link href="#about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
-            <Link href="#contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link>
+            <Link href="#services" className="text-muted-foreground hover:text-orange transition-colors">Services</Link>
+            <Link href="#about" className="text-muted-foreground hover:text-orange transition-colors">About</Link>
+            <Link href="#contact" className="text-muted-foreground hover:text-orange transition-colors">Contact</Link>
           </nav>
-          <Button asChild>
+          <Button variant="orange" asChild>
             <Link href="#contact">Get Started</Link>
           </Button>
         </div>
