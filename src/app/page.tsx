@@ -190,7 +190,7 @@ export default function Home() {
             <div className="relative w-16 h-12">
               <Image 
                 src={LOGO_URL}
-                alt="MT IT Services Logo"
+                alt="TechMax IT Services Logo"
                 fill
                 className="object-contain"
                 priority
