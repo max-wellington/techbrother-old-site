@@ -292,8 +292,22 @@ export default function Home() {
                 Trusted Tampa IT Partner
               </motion.div>
               <motion.h1 variants={isMobile ? fadeInUpMobile : fadeInUp} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 w-fit min-h-[1.2em]">
-                <span ref={el} />
-              </motion.h1>
+                  {isMobile ? (
+                    <AnimatePresence mode="wait">
+                      <motion.span
+                        key={currentTextIndex}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        {typedStrings[currentTextIndex]}
+                      </motion.span>
+                    </AnimatePresence>
+                  ) : (
+                    <span ref={el} />
+                  )}
+                </motion.h1>
               <motion.p variants={isMobile ? fadeInUpMobile : fadeInUp} className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
                 We deliver comprehensive managed IT services, expert consulting, and seamless project execution to help your business thrive in the digital age.
               </motion.p>
