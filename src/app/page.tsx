@@ -304,9 +304,9 @@ export default function Home() {
                         className="object-cover"
                         priority
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#041324]/40 to-transparent" />
-                    </motion.div>
-                  </AnimatePresence>
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#041324]/40 to-transparent" />
+                      </motion.div>
+                    </AnimatePresence>
                 </div>
               </div>
             </motion.div>
