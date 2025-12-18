@@ -106,9 +106,9 @@ export default function Home() {
         'Drive Innovation',
         'Secure Your Future'
       ],
-      typeSpeed: 50,
-      backSpeed: 25,
-      backDelay: 1500,
+      typeSpeed: 40,
+      backSpeed: 20,
+      backDelay: 1000,
       loop: true,
       showCursor: true,
       cursorChar: '|'
