@@ -137,7 +137,10 @@ export default function Home() {
       backDelay: 1500,
       loop: true,
       showCursor: true,
-      cursorChar: '|'
+      cursorChar: '|',
+      preStringTyped: (arrayPos) => {
+        setCurrentImageIndex(arrayPos);
+      }
     });
 
     return () => {
