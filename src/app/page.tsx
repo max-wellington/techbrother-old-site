@@ -107,10 +107,11 @@ export default function Home() {
     if (!el.current) return;
     const typed = new Typed(el.current, {
       strings: [
-        'Transform Your Business',
         'Optimize Your IT',
-        'Drive Innovation',
-        'Secure Your Future'
+        'Streamline Operations',
+        'Drive Growth',
+        'Secure Yourself & Your Customers',
+        'Transform Your Businesses'
       ],
       typeSpeed: 40,
       backSpeed: 20,
