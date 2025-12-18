@@ -139,23 +139,23 @@ export default function Home() {
                 <CardContent>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       24/7 Network Monitoring
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       Proactive Maintenance
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       Help Desk Support
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       Security Management
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       Backup & Recovery
                     </li>
                   </ul>
@@ -182,23 +182,23 @@ export default function Home() {
                 <CardContent>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       Infrastructure Upgrades
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       Cloud Migrations
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       Office Relocations
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       System Deployments
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       Security Audits
                     </li>
                   </ul>
@@ -225,23 +225,23 @@ export default function Home() {
                 <CardContent>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       Technology Roadmapping
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       Vendor Selection
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       Budget Planning
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       Compliance Guidance
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       Digital Transformation
                     </li>
                   </ul>
