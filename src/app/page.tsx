@@ -182,23 +182,23 @@ export default function Home() {
                 <CardContent>
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
                       Infrastructure Upgrades
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
                       Cloud Migrations
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
                       Office Relocations
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
                       System Deployments
                     </li>
                     <li className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-orange rounded-full" />
                       Security Audits
                     </li>
                   </ul>
