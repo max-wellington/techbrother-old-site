@@ -736,119 +736,123 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <Card className="border-2 shadow-sm">
-                <CardHeader>
-                  <CardTitle>Request a Consultation</CardTitle>
-                  <CardDescription>Fill out the form below and we&apos;ll get back to you within 24 hours.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <AnimatePresence mode="wait">
-                    {isSubmitted ? (
-                      <motion.div
-                        key="success"
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        className="py-12 flex flex-col items-center text-center space-y-4"
+              <Card className="border-2 shadow-sm min-h-[500px] flex flex-col justify-center overflow-hidden">
+                <AnimatePresence mode="wait">
+                  {isSubmitted ? (
+                    <motion.div
+                      key="success"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                      className="p-12 flex flex-col items-center text-center space-y-6"
+                    >
+                      <div className="w-24 h-24 bg-green-500/10 rounded-full flex items-center justify-center mb-2">
+                        <CheckCircle2 className="w-12 h-12 text-green-500" />
+                      </div>
+                      <div className="space-y-3">
+                        <h3 className="text-3xl font-bold text-foreground">Message Sent!</h3>
+                        <p className="text-xl text-muted-foreground max-w-sm">
+                          Thank you for reaching out. We&apos;ve received your message and will get back to you within 24 hours.
+                        </p>
+                      </div>
+                      <Button 
+                        variant="outline" 
+                        size="lg"
+                        onClick={() => setIsSubmitted(false)}
+                        className="mt-6 border-primary/20 hover:bg-primary/5 text-primary font-semibold"
                       >
-                        <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mb-2">
-                          <CheckCircle2 className="w-10 h-10 text-green-500" />
-                        </div>
-                        <div className="space-y-2">
-                          <h3 className="text-2xl font-bold text-foreground">Message Sent!</h3>
-                          <p className="text-muted-foreground max-w-sm">
-                            Thank you for reaching out. We&apos;ve received your message and will get back to you within 24 hours.
-                          </p>
-                        </div>
-                        <Button 
-                          variant="outline" 
-                          onClick={() => setIsSubmitted(false)}
-                          className="mt-4"
-                        >
-                          Send Another Message
-                        </Button>
-                      </motion.div>
-                    ) : (
-                      <motion.form 
-                        key="form"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="space-y-4" 
-                        onSubmit={handleSubmit}
-                      >
-                        <div className="grid grid-cols-2 gap-4">
+                        Send Another Message
+                      </Button>
+                    </motion.div>
+                  ) : (
+                    <motion.div 
+                      key="form"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <CardHeader>
+                        <CardTitle className="text-2xl">Request a Consultation</CardTitle>
+                        <CardDescription className="text-base">Fill out the form below and we&apos;ll get back to you within 24 hours.</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <form className="space-y-4" onSubmit={handleSubmit}>
+                          <div className="grid grid-cols-2 gap-4">
+                            <div>
+                              <label className="text-sm font-medium text-foreground mb-2 block">First Name</label>
+                              <Input 
+                                required
+                                value={formData.firstName}
+                                onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                                placeholder="John" 
+                                className="focus-visible:ring-primary/20 h-11" 
+                              />
+                            </div>
+                            <div>
+                              <label className="text-sm font-medium text-foreground mb-2 block">Last Name</label>
+                              <Input 
+                                required
+                                value={formData.lastName}
+                                onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                                placeholder="Doe" 
+                                className="focus-visible:ring-primary/20 h-11" 
+                              />
+                            </div>
+                          </div>
                           <div>
-                            <label className="text-sm font-medium text-foreground mb-2 block">First Name</label>
+                            <label className="text-sm font-medium text-foreground mb-2 block">Email</label>
                             <Input 
                               required
-                              value={formData.firstName}
-                              onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                              placeholder="John" 
-                              className="focus-visible:ring-primary/20" 
+                              type="email" 
+                              value={formData.email}
+                              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                              placeholder="john@company.com" 
+                              className="focus-visible:ring-primary/20 h-11" 
                             />
                           </div>
                           <div>
-                            <label className="text-sm font-medium text-foreground mb-2 block">Last Name</label>
+                            <label className="text-sm font-medium text-foreground mb-2 block">Company</label>
                             <Input 
+                              value={formData.company}
+                              onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                              placeholder="Company Name" 
+                              className="focus-visible:ring-primary/20 h-11" 
+                            />
+                          </div>
+                          <div>
+                            <label className="text-sm font-medium text-foreground mb-2 block">Message</label>
+                            <Textarea 
                               required
-                              value={formData.lastName}
-                              onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                              placeholder="Doe" 
+                              value={formData.message}
+                              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                              placeholder="Tell us about your IT needs..." 
+                              rows={4} 
                               className="focus-visible:ring-primary/20" 
                             />
                           </div>
-                        </div>
-                        <div>
-                          <label className="text-sm font-medium text-foreground mb-2 block">Email</label>
-                          <Input 
-                            required
-                            type="email" 
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            placeholder="john@company.com" 
-                            className="focus-visible:ring-primary/20" 
-                          />
-                        </div>
-                        <div>
-                          <label className="text-sm font-medium text-foreground mb-2 block">Company</label>
-                          <Input 
-                            value={formData.company}
-                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                            placeholder="Company Name" 
-                            className="focus-visible:ring-primary/20" 
-                          />
-                        </div>
-                        <div>
-                          <label className="text-sm font-medium text-foreground mb-2 block">Message</label>
-                          <Textarea 
-                            required
-                            value={formData.message}
-                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                            placeholder="Tell us about your IT needs..." 
-                            rows={4} 
-                            className="focus-visible:ring-primary/20" 
-                          />
-                        </div>
-                        <Button 
-                          type="submit" 
-                          variant="default" 
-                          className="w-full bg-primary hover:bg-primary/90" 
-                          size="lg"
-                          disabled={isSubmitting}
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                              Sending...
-                            </>
-                          ) : (
-                            "Send Message"
-                          )}
-                        </Button>
-                      </motion.form>
-                    )}
-                  </AnimatePresence>
-                </CardContent>
+                          <Button 
+                            type="submit" 
+                            variant="default" 
+                            className="w-full bg-primary hover:bg-primary/90 h-12 text-base font-semibold" 
+                            size="lg"
+                            disabled={isSubmitting}
+                          >
+                            {isSubmitting ? (
+                              <>
+                                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                                Sending...
+                              </>
+                            ) : (
+                              "Send Message"
+                            )}
+                          </Button>
+                        </form>
+                      </CardContent>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </Card>
             </motion.div>
           </div>
