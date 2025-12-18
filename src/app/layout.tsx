@@ -49,68 +49,10 @@ export default function RootLayout({
           data-debug="true"
           data-custom-data='{"appName": "YourApp", "version": "1.0.0", "greeting": "hi"}'
         />
+        <Navbar />
         {children}
+        <Footer />
         <VisualEditsMessenger />
-      </body>
-    </html>
-  );
-}
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { VisualEditsMessenger } from "orchids-visual-edits";
-import ErrorReporter from "@/components/ErrorReporter";
-import Script from "next/script";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "TechBrother - Managed IT Services & Consulting",
-  description: "Empowering your business through reliable managed IT services, expert consulting, and innovative projects.",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Script
-          id="orchids-browser-logs"
-          src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/scripts/orchids-browser-logs.js"
-          strategy="afterInteractive"
-          data-orchids-project-id="c49af1bf-41a5-4688-a211-4f2f3f9ec0dd"
-        />
-          <ErrorReporter />
-          <Script
-            src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/scripts//route-messenger.js"
-            strategy="afterInteractive"
-            data-target-origin="*"
-            data-message-type="ROUTE_CHANGE"
-            data-include-search-params="true"
-            data-only-in-iframe="true"
-            data-debug="true"
-            data-custom-data='{"appName": "YourApp", "version": "1.0.0", "greeting": "hi"}'
-          />
-          <Navbar />
-          {children}
-          <Footer />
-          <VisualEditsMessenger />
-
       </body>
     </html>
   );
