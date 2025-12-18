@@ -262,7 +262,7 @@ export default function Home() {
             >
               <h2 className="text-4xl font-bold mb-6">Why Choose TechMax?</h2>
               <p className="text-lg opacity-90 mb-8 leading-relaxed">
-                With over 15 years in the industry, we&apos;ve built a reputation for delivering reliable, innovative IT solutions that drive business success. Our team of certified professionals is committed to being your trusted technology partner.
+                With over 10 years in the industry, we&apos;ve built a reputation for delivering reliable, innovative IT solutions that drive business success. Our team of certified professionals is committed to being your trusted technology partner.
               </p>
               <div className="grid grid-cols-2 gap-6">
                 {[
