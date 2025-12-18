@@ -28,6 +28,13 @@ const staggerContainer = {
 const LOGO_WHITE_URL = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/logo-white-1766159620785.png?width=8000&height=8000&resize=contain";
 const LOGO_BLACK_URL = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/logo-black-1766089816039.png?width=8000&height=8000&resize=contain";
 
+const heroImages = [
+  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2340&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2344&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2340&auto=format&fit=crop"
+];
+
 const services = [
   { name: "Managed IT Services", href: "/services/managed-it", description: "Seamless business operations" },
   { name: "One-Off Projects", href: "/services/one-off-projects", description: "Expert initiative execution" },
