@@ -307,34 +307,69 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
         
         <div className="relative max-w-7xl mx-auto px-6">
-          <motion.div 
-            initial="initial"
-            animate="animate"
-            variants={staggerContainer}
-            className="max-w-3xl"
-          >
-            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <Shield className="w-4 h-4" />
-              Trusted IT Partner
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div 
+              initial="initial"
+              animate="animate"
+              variants={staggerContainer}
+              className="max-w-3xl"
+            >
+              <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <Shield className="w-4 h-4" />
+                Trusted IT Partner
+              </motion.div>
+              <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 w-fit h-[1.2em] md:h-[1.5em]">
+                <span ref={el} />
+              </motion.h1>
+              <motion.p variants={fadeInUp} className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+                We deliver comprehensive managed IT services, expert consulting, and seamless project execution to help your business thrive in the digital age.
+              </motion.p>
+              <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
+                <Button size="lg" variant="default" asChild className="gap-2 bg-primary hover:bg-primary/90">
+                  <Link href="#contact">
+                    Schedule Consultation
+                    <ChevronRight className="w-4 h-4" />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild className="border-primary/20 hover:bg-primary/5 text-primary">
+                  <Link href="#services">Explore Services</Link>
+                </Button>
+              </motion.div>
             </motion.div>
-            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 w-fit">
-              <span ref={el} />
-            </motion.h1>
-            <motion.p variants={fadeInUp} className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
-              We deliver comprehensive managed IT services, expert consulting, and seamless project execution to help your business thrive in the digital age.
-            </motion.p>
-            <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
-              <Button size="lg" variant="default" asChild className="gap-2 bg-primary hover:bg-primary/90">
-                <Link href="#contact">
-                  Schedule Consultation
-                  <ChevronRight className="w-4 h-4" />
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild className="border-primary/20 hover:bg-primary/5 text-primary">
-                <Link href="#services">Explore Services</Link>
-              </Button>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative hidden lg:block"
+            >
+              <div className="relative w-full aspect-square max-w-xl mx-auto">
+                <div className="absolute inset-0 bg-primary/5 rounded-3xl -rotate-6" />
+                <div className="absolute inset-0 bg-accent/5 rounded-3xl rotate-3" />
+                <div className="relative h-full w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentImageIndex}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.5 }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={heroImages[currentImageIndex]}
+                        alt="Hero"
+                        fill
+                        className="object-cover"
+                        priority
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#041324]/40 to-transparent" />
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+              </div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
