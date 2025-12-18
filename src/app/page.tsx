@@ -413,7 +413,7 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-2">
               <div className="flex items-center gap-2 mb-4">
-                <div className="relative w-12 h-12 brightness-0 invert">
+                <div className="relative w-20 h-16 brightness-0 invert">
                   <Image 
                     src={LOGO_URL}
                     alt="MT IT Services Logo"
@@ -421,7 +421,6 @@ export default function Home() {
                     className="object-contain"
                   />
                 </div>
-                <span className="text-xl font-bold">MT IT Services</span>
               </div>
               <p className="text-background/70 max-w-sm">
                 Your trusted partner for managed IT services, projects, and consulting. Currently serving 2 active clients with 10+ years of expertise.
