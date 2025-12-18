@@ -103,7 +103,16 @@ export default function Home() {
   const [totalScore, setTotalScore] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     if (!el.current) return;
