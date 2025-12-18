@@ -160,7 +160,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden fixed inset-0 top-0 bg-[#041324] z-40 pt-24"
+              className="md:hidden fixed inset-0 bg-[#041324] z-[100] pt-24 overflow-y-auto"
             >
               <nav className="flex flex-col p-6 space-y-2">
                 <div>
@@ -169,34 +169,44 @@ export default function Navbar() {
                     className="w-full flex items-center justify-between py-4 text-white font-semibold text-lg border-b border-white/10"
                   >
                     Services
-                    <ChevronDown className={`w-5 h-5 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`} />
+                    <ChevronDown className={`w-5 h-5 transition-transform text-white ${mobileServicesOpen ? "rotate-180" : ""}`} />
                   </button>
-                  {mobileServicesOpen && (
-                    <div className="py-2 pl-4 space-y-1">
-                      {services.map((service) => (
-                        <Link
-                          key={service.href}
-                          href={service.href}
-                          className="block py-3 text-white/80 hover:text-white transition-colors"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          <div className="font-medium">{service.name}</div>
-                          <div className="text-sm text-white/50">{service.description}</div>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                  <AnimatePresence>
+                    {mobileServicesOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="py-2 pl-4 space-y-1">
+                          {services.map((service) => (
+                            <Link
+                              key={service.href}
+                              href={service.href}
+                              className="block py-3 text-white/90 hover:text-white transition-colors"
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              <div className="font-medium">{service.name}</div>
+                              <div className="text-sm text-white/70">{service.description}</div>
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
                 <Link
                   href="/#about"
-                  className="py-4 text-white font-semibold text-lg border-b border-white/10"
+                  className="py-4 text-white font-semibold text-lg border-b border-white/10 hover:text-white/90 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   About
                 </Link>
                 <Link
                   href="/#contact"
-                  className="py-4 text-white font-semibold text-lg border-b border-white/10"
+                  className="py-4 text-white font-semibold text-lg border-b border-white/10 hover:text-white/90 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Contact
