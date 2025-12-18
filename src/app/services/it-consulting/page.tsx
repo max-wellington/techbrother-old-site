@@ -1,20 +1,10 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Users, Shield, CheckCircle2, ChevronRight, ChevronDown, TrendingUp, FileText, Scale, Lightbulb, Target, Handshake } from "lucide-react";
+import { motion } from "framer-motion";
+import { Users, Shield, CheckCircle2, ChevronRight, TrendingUp, FileText, Scale, Lightbulb, Target, Handshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
-import Image from "next/image";
-
-const LOGO_WHITE_URL = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/logo-white-1766159620785.png?width=8000&height=8000&resize=contain";
-
-const services = [
-  { name: "Managed IT Services", href: "/services/managed-it", description: "Seamless business operations" },
-  { name: "One-Off Projects", href: "/services/one-off-projects", description: "Expert initiative execution" },
-  { name: "IT Consulting", href: "/services/it-consulting", description: "Strategic technology alignment" },
-];
 
 const consultingServices = [
   {
@@ -69,73 +59,8 @@ const benefits = [
 ];
 
 export default function ITConsultingPage() {
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setServicesOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
   return (
     <div className="min-h-screen bg-background font-sans">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#041324] backdrop-blur-md border-b border-white/10 shadow-lg">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="relative w-56 h-14">
-                <Image 
-                  src={LOGO_WHITE_URL}
-                  alt="TechBrother Logo"
-                  fill
-                  className="object-contain"
-                  priority
-                />
-              </div>
-            </Link>
-          <nav className="hidden md:flex items-center gap-8">
-            <div className="relative" ref={dropdownRef} onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
-              <button 
-                className="text-white/90 hover:text-white transition-colors font-medium flex items-center gap-1 py-2"
-              >
-                Services
-                <ChevronDown className={`w-4 h-4 transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
-              </button>
-              <AnimatePresence>
-                {servicesOpen && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 w-64 bg-[#041324] border border-white/10 rounded-xl shadow-2xl py-3 overflow-hidden"
-                  >
-                    {services.map((service) => (
-                      <Link
-                        key={service.href}
-                        href={service.href}
-                        className="block px-5 py-3 hover:bg-white/5 transition-colors group"
-                      >
-                        <div className="text-white font-medium group-hover:text-primary transition-colors">{service.name}</div>
-                        <div className="text-xs text-white/50 group-hover:text-white/70">{service.description}</div>
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-            <Link href="/#about" className="text-white/90 hover:text-white transition-colors font-medium">About</Link>
-            <Link href="/#contact" className="text-white/90 hover:text-white transition-colors font-medium">Contact</Link>
-          </nav>
-          <Button variant="secondary" asChild className="bg-white text-[#041324] hover:bg-white/90">
-            <Link href="/#contact">Get Started</Link>
-          </Button>
-        </div>
-      </header>
-
       <section className="relative pt-32 pb-20 bg-[#041324] text-white overflow-hidden">
         <div className="absolute top-20 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
@@ -164,9 +89,9 @@ export default function ITConsultingPage() {
                   <ChevronRight className="w-4 h-4" />
                 </Link>
               </Button>
-                <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 !bg-transparent">
-                  <Link href="/#services">View All Services</Link>
-                </Button>
+              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 !bg-transparent">
+                <Link href="/#services">View All Services</Link>
+              </Button>
             </div>
           </motion.div>
         </div>
@@ -333,46 +258,6 @@ export default function ITConsultingPage() {
           </motion.div>
         </div>
       </section>
-
-      <footer className="bg-[#041324] text-white py-16 border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div className="col-span-2">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="relative w-72 h-24">
-                  <Image 
-                    src={LOGO_WHITE_URL}
-                    alt="TechBrother Logo"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </div>
-              <p className="text-white/70 max-w-sm">
-                Your trusted partner for managed IT services, projects, and consulting.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-white">Services</h3>
-              <ul className="space-y-2 text-white/70">
-                <li><Link href="/services/managed-it" className="hover:text-primary transition-colors">Managed IT</Link></li>
-                <li><Link href="/services/one-off-projects" className="hover:text-primary transition-colors">One-Off Projects</Link></li>
-                <li><Link href="/services/it-consulting" className="hover:text-primary transition-colors">Consulting</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-white">Company</h3>
-              <ul className="space-y-2 text-white/70">
-                <li><Link href="/#about" className="hover:text-primary transition-colors">About Us</Link></li>
-                <li><Link href="/#contact" className="hover:text-primary transition-colors">Contact</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-white/10 pt-8 text-center text-white/60">
-            <p>&copy; {new Date().getFullYear()} TechBrother. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
