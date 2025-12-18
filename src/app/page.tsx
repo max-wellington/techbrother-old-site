@@ -190,7 +190,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (!el.current) return;
+    if (isMobile || !el.current) return;
     const typed = new Typed(el.current, {
       strings: typedStrings,
       typeSpeed: 40,
@@ -207,7 +207,7 @@ export default function Home() {
     return () => {
       typed.destroy();
     };
-  }, []);
+  }, [isMobile]);
 
   const startHealthCheck = () => {
     setHealthCheckStep("questions");
