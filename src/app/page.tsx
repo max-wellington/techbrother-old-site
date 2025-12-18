@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Monitor, Wrench, Users, Shield, Clock, Headphones, ChevronRight, Server, Cloud, Lock } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Monitor, Wrench, Users, Shield, Clock, Headphones, ChevronRight, Server, Cloud, Lock, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -25,7 +26,144 @@ const staggerContainer = {
 
 const LOGO_URL = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/FullLogo_Transparent_NoBuffer-1766035975850.png?width=8000&height=8000&resize=contain";
 
+const healthCheckQuestions = [
+  {
+    question: "How would you rate your current IT infrastructure?",
+    options: [
+      { text: "Excellent - Modern and well-maintained", score: 5 },
+      { text: "Good - Adequate for current needs", score: 4 },
+      { text: "Fair - Some areas need improvement", score: 3 },
+      { text: "Poor - Frequent issues and downtime", score: 2 },
+      { text: "Very Poor - Constant problems", score: 1 }
+    ]
+  },
+  {
+    question: "How often do you experience IT-related downtime?",
+    options: [
+      { text: "Rarely - Less than once per month", score: 5 },
+      { text: "Occasionally - 1-2 times per month", score: 4 },
+      { text: "Regularly - 3-4 times per month", score: 3 },
+      { text: "Frequently - Weekly issues", score: 2 },
+      { text: "Constantly - Daily problems", score: 1 }
+    ]
+  },
+  {
+    question: "Do you have a dedicated IT support team?",
+    options: [
+      { text: "Yes - Full-time IT staff", score: 5 },
+      { text: "Yes - Part-time IT support", score: 4 },
+      { text: "No - Handle IT ourselves", score: 3 },
+      { text: "No - Rely on break-fix services", score: 2 },
+      { text: "No IT support at all", score: 1 }
+    ]
+  },
+  {
+    question: "How secure is your current IT environment?",
+    options: [
+      { text: "Very secure - Multiple layers of protection", score: 5 },
+      { text: "Secure - Basic security measures in place", score: 4 },
+      { text: "Somewhat secure - Room for improvement", score: 3 },
+      { text: "Insecure - Minimal security measures", score: 2 },
+      { text: "Very insecure - No security measures", score: 1 }
+    ]
+  },
+  {
+    question: "How well does your IT support your business goals?",
+    options: [
+      { text: "Perfectly - IT drives business growth", score: 5 },
+      { text: "Well - IT supports most operations", score: 4 },
+      { text: "Adequately - IT meets basic needs", score: 3 },
+      { text: "Poorly - IT hinders productivity", score: 2 },
+      { text: "Very poorly - IT is a major obstacle", score: 1 }
+    ]
+  },
+  {
+    question: "What's your biggest IT challenge?",
+    options: [
+      { text: "Keeping up with technology trends", score: 3 },
+      { text: "Managing cybersecurity threats", score: 3 },
+      { text: "Controlling IT costs", score: 3 },
+      { text: "Ensuring system reliability", score: 3 },
+      { text: "Lack of IT expertise", score: 3 }
+    ]
+  }
+];
+
 export default function Home() {
+  const [healthCheckStep, setHealthCheckStep] = useState<"start" | "questions" | "results">("start");
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [totalScore, setTotalScore] = useState(0);
+  const [answers, setAnswers] = useState<string[]>([]);
+
+  const startHealthCheck = () => {
+    setHealthCheckStep("questions");
+    setCurrentQuestionIndex(0);
+    setTotalScore(0);
+    setAnswers([]);
+  };
+
+  const selectAnswer = (score: number, text: string) => {
+    setTotalScore(prev => prev + score);
+    setAnswers(prev => [...prev, text]);
+
+    setTimeout(() => {
+      if (currentQuestionIndex < healthCheckQuestions.length - 1) {
+        setCurrentQuestionIndex(prev => prev + 1);
+      } else {
+        setHealthCheckStep("results");
+      }
+    }, 400);
+  };
+
+  const getScoreInfo = (score: number) => {
+    const maxScore = healthCheckQuestions.length * 5;
+    const finalScore = Math.round((score / maxScore) * 100);
+    
+    let description = "";
+    let recommendations: string[] = [];
+
+    if (finalScore >= 80) {
+      description = "Excellent! Your IT infrastructure is well-managed and secure.";
+      recommendations = [
+        "Optimize existing systems for better performance",
+        "Explore advanced cybersecurity solutions",
+        "Consider strategic IT consulting for growth planning"
+      ];
+    } else if (finalScore >= 60) {
+      description = "Good foundation with opportunities for optimization.";
+      recommendations = [
+        "Upgrade security measures and backup systems",
+        "Implement proactive maintenance schedules",
+        "Consider managed IT services for better support"
+      ];
+    } else if (finalScore >= 40) {
+      description = "Your IT setup needs attention to improve reliability and security.";
+      recommendations = [
+        "Consider comprehensive IT infrastructure assessment",
+        "Implement 24/7 monitoring and support",
+        "Develop cybersecurity strategy and protocols"
+      ];
+    } else {
+      description = "Critical IT issues that are likely impacting your business operations.";
+      recommendations = [
+        "Immediate security audit required",
+        "Urgent infrastructure modernization needed",
+        "Establish business continuity plan"
+      ];
+    }
+
+    if (answers.includes("Lack of IT expertise")) {
+      recommendations.push("Partner with managed IT services provider");
+    }
+    if (answers.includes("Frequent downtime")) {
+      recommendations.push("Implement redundancy and failover systems");
+    }
+
+    return { finalScore, description, recommendations };
+  };
+
+  const scoreInfo = getScoreInfo(totalScore);
+
   return (
     <div className="min-h-screen bg-background font-sans">
       <header className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md border-b border-primary/20 shadow-lg">
@@ -127,7 +265,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -256,6 +394,115 @@ export default function Home() {
                 </CardContent>
               </Card>
             </motion.div>
+          </div>
+
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-primary/80 p-8 md:p-12 shadow-2xl">
+              <div className="relative z-10">
+                <AnimatePresence mode="wait">
+                  {healthCheckStep === "start" && (
+                    <motion.div
+                      key="start"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      className="text-center"
+                    >
+                      <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <CheckCircle2 className="w-10 h-10 text-white" />
+                      </div>
+                      <h3 className="text-3xl font-bold text-white mb-4">Free IT Health Check</h3>
+                      <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
+                        Discover how your current IT setup compares to industry standards and get personalized recommendations in 60 seconds.
+                      </p>
+                      <Button onClick={startHealthCheck} size="lg" variant="secondary" className="font-bold px-12 h-14 text-lg">
+                        Start Assessment
+                      </Button>
+                    </motion.div>
+                  )}
+
+                  {healthCheckStep === "questions" && (
+                    <motion.div
+                      key="questions"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                    >
+                      <div className="mb-8">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="text-sm font-medium text-white/80">Question {currentQuestionIndex + 1} of {healthCheckQuestions.length}</span>
+                          <span className="text-sm font-medium text-white/80">{Math.round(((currentQuestionIndex + 1) / healthCheckQuestions.length) * 100)}%</span>
+                        </div>
+                        <div className="w-full bg-white/20 rounded-full h-2 overflow-hidden">
+                          <motion.div 
+                            className="bg-white h-full"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${((currentQuestionIndex + 1) / healthCheckQuestions.length) * 100}%` }}
+                            transition={{ duration: 0.4 }}
+                          />
+                        </div>
+                      </div>
+                      
+                      <h3 className="text-2xl font-bold text-white mb-8">{healthCheckQuestions[currentQuestionIndex].question}</h3>
+                      <div className="grid gap-3">
+                        {healthCheckQuestions[currentQuestionIndex].options.map((option, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => selectAnswer(option.score, option.text)}
+                            className="w-full text-left p-4 rounded-xl border-2 border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/40 transition-all text-white font-medium"
+                          >
+                            {option.text}
+                          </button>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {healthCheckStep === "results" && (
+                    <motion.div
+                      key="results"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="text-center"
+                    >
+                      <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <CheckCircle2 className="w-10 h-10 text-white" />
+                      </div>
+                      <h3 className="text-3xl font-bold text-white mb-2">Your IT Health Score</h3>
+                      <div className="text-7xl font-bold text-white mb-4">{scoreInfo.finalScore}</div>
+                      <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
+                        {scoreInfo.description}
+                      </p>
+                      
+                      <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 mb-8 text-left max-w-2xl mx-auto">
+                        <h4 className="font-bold text-white text-lg mb-4">Recommended Next Steps:</h4>
+                        <ul className="space-y-3">
+                          {scoreInfo.recommendations.map((rec, idx) => (
+                            <li key={idx} className="flex items-start gap-3 text-white/90">
+                              <CheckCircle2 className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                              <span>{rec}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <Button size="lg" variant="secondary" asChild className="font-bold">
+                          <Link href="#contact">Schedule Consultation</Link>
+                        </Button>
+                        <Button size="lg" variant="outline" onClick={startHealthCheck} className="text-white border-white hover:bg-white/10">
+                          Retake Assessment
+                        </Button>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+              
+              {/* Background abstract shapes */}
+              <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+            </div>
           </div>
         </div>
       </section>
