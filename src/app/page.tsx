@@ -67,7 +67,7 @@ export default function Home() {
               We deliver comprehensive managed IT services, expert consulting, and seamless project execution to help your business thrive in the digital age.
             </motion.p>
             <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
-              <Button size="lg" asChild className="gap-2">
+              <Button size="lg" variant="orange" asChild className="gap-2">
                 <Link href="#contact">
                   Schedule Consultation
                   <ChevronRight className="w-4 h-4" />
