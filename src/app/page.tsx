@@ -780,16 +780,16 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-2">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="relative w-40 h-16">
-                  <Image 
-                    src={LOGO_WHITE_URL}
-                    alt="TechBrother Logo"
-                    fill
-                    className="object-contain"
-                  />
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="relative w-40 h-16">
+                    <Image 
+                      src={LOGO_BLACK_URL}
+                      alt="TechBrother Logo"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
-              </div>
               <p className="text-white/70 max-w-sm">
                 Your trusted partner for managed IT services, projects, and consulting. Currently serving a select group of clients with 10+ years of expertise.
               </p>
