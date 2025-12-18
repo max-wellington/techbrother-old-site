@@ -827,7 +827,7 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-2">
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="relative w-64 h-20">
+                  <div className="relative w-72 h-24">
                     <Image 
                       src={LOGO_WHITE_URL}
                       alt="TechBrother Logo"
