@@ -106,6 +106,7 @@ const healthCheckQuestions = [
 
 export default function Home() {
   const el = useRef<HTMLSpanElement>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [healthCheckStep, setHealthCheckStep] = useState<"start" | "questions" | "results">("start");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
