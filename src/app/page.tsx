@@ -678,15 +678,15 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-[#041324] text-background py-16">
+      <footer className="bg-[#1B76DE] text-background py-16">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-2">
               <div className="flex items-center gap-2 mb-4">
-                <div className="relative w-20 h-16 brightness-0 invert">
+                <div className="relative w-40 h-16 brightness-0 invert">
                   <Image 
-                    src={LOGO_URL}
-                    alt="TechMax IT Services Logo"
+                    src={LOGO_WHITE_URL}
+                    alt="TechBrother Logo"
                     fill
                     className="object-contain"
                   />
@@ -713,7 +713,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-background/20 pt-8 text-center text-background/60">
-            <p>&copy; {new Date().getFullYear()} TechMax IT Services. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} TechBrother. All rights reserved.</p>
           </div>
         </div>
       </footer>
