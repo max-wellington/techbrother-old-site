@@ -129,7 +129,8 @@ export default function Home() {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success("Message sent successfully! We'll get back to you soon.");
+        setIsSubmitted(true);
+        toast.success("Message sent successfully!");
         setFormData({
           firstName: "",
           lastName: "",
