@@ -372,7 +372,7 @@ export default function Home() {
                     <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                       <Wrench className="w-7 h-7 text-primary" />
                     </div>
-                    <CardTitle className="text-2xl">One-Off IT Projects</CardTitle>
+                    <CardTitle className="text-2xl">One-Off Projects</CardTitle>
                     <CardDescription className="text-base">
                       Expert execution for your specific IT initiatives
                     </CardDescription>
