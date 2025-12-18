@@ -160,13 +160,7 @@ export default function Home() {
   useEffect(() => {
     if (!el.current) return;
     const typed = new Typed(el.current, {
-      strings: [
-        'Optimize Your IT',
-        'Streamline Operations',
-        'Drive Growth',
-        'Secure Your Future',
-        'Transform Your Business'
-      ],
+      strings: typedStrings,
       typeSpeed: 40,
       backSpeed: 20,
       backDelay: 1500,
