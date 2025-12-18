@@ -104,6 +104,7 @@ export default function Home() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [totalScore, setTotalScore] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
+  const [formLoading, setFormLoading] = useState(false);
 
   useEffect(() => {
     if (!el.current) return;
