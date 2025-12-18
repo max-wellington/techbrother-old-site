@@ -518,9 +518,11 @@ export default function Home() {
                         </div>
                       </div>
                       
-                      <h3 className="text-2xl font-bold text-white mb-8">{healthCheckQuestions[currentQuestionIndex].question}</h3>
+                      <h3 className="text-2xl font-bold text-white mb-8">
+                        {healthCheckQuestions[currentQuestionIndex]?.question}
+                      </h3>
                       <div className="grid gap-3">
-                        {healthCheckQuestions[currentQuestionIndex].options.map((option, idx) => (
+                        {healthCheckQuestions[currentQuestionIndex]?.options.map((option, idx) => (
                           <button
                             key={idx}
                             onClick={() => selectAnswer(option.score, option.text)}
