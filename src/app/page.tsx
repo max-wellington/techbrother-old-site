@@ -56,7 +56,7 @@ export default function Home() {
             variants={staggerContainer}
             className="max-w-3xl"
           >
-            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-orange/10 text-orange px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
               <Shield className="w-4 h-4" />
               Trusted IT Partner
             </motion.div>
