@@ -668,9 +668,10 @@ export default function Home() {
               </div>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={isMobile ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: isMobile ? 0 : 0.4 }}
               className="grid grid-cols-2 gap-4"
             >
               <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
