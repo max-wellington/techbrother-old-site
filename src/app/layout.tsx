@@ -53,6 +53,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <Toaster />
         <VisualEditsMessenger />
       </body>
     </html>
