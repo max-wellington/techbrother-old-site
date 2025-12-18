@@ -270,7 +270,7 @@ export default function Home() {
               <Shield className="w-4 h-4" />
               Trusted IT Partner
             </motion.div>
-            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 grid">
+            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 grid h-[1.2em] md:h-[1.2em] lg:h-[1.2em]">
               <span className="invisible row-start-1 col-start-1" aria-hidden="true">
                 Transform Your Business
               </span>
