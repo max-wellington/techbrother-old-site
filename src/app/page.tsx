@@ -51,7 +51,7 @@ const heroImages = [
 const typedStrings = [
   'Optimize Your IT',
   'Streamline Operations',
-  'Drive Growth',
+  'Drive Digital Growth',
   'Secure Your Future',
   'Transform Your Business'
 ];
@@ -279,19 +279,51 @@ export default function Home() {
         <div className="absolute top-20 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
         
+        {/* Tech grid pattern background */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0" 
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, currentColor 1px, transparent 1px),
+              linear-gradient(to bottom, currentColor 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px',
+            color: 'currentColor'
+          }}
+        />
+        
+        {/* Circuit-like connecting lines */}
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none z-0">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="tech-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                <circle cx="20" cy="20" r="2" fill="currentColor" opacity="0.3" />
+                <circle cx="80" cy="20" r="2" fill="currentColor" opacity="0.3" />
+                <circle cx="50" cy="50" r="2" fill="currentColor" opacity="0.3" />
+                <circle cx="20" cy="80" r="2" fill="currentColor" opacity="0.3" />
+                <circle cx="80" cy="80" r="2" fill="currentColor" opacity="0.3" />
+                <line x1="20" y1="20" x2="50" y2="50" stroke="currentColor" strokeWidth="0.5" opacity="0.2" />
+                <line x1="80" y1="20" x2="50" y2="50" stroke="currentColor" strokeWidth="0.5" opacity="0.2" />
+                <line x1="20" y1="80" x2="50" y2="50" stroke="currentColor" strokeWidth="0.5" opacity="0.2" />
+                <line x1="80" y1="80" x2="50" y2="50" stroke="currentColor" strokeWidth="0.5" opacity="0.2" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#tech-pattern)" />
+          </svg>
+        </div>
+        
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div 
               initial="initial"
               animate="animate"
               variants={isMobile ? staggerContainerMobile : staggerContainer}
-              className="max-w-3xl"
+              className="max-w-3xl md:max-w-3xl mx-auto md:mx-0 text-center md:text-left"
             >
-              <motion.div variants={isMobile ? fadeInUpMobile : fadeInUp} className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <motion.div variants={isMobile ? fadeInUpMobile : fadeInUp} className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 mx-auto md:mx-0">
                 <Shield className="w-4 h-4" />
                 Trusted Tampa IT Partner
               </motion.div>
-              <motion.h1 variants={isMobile ? fadeInUpMobile : fadeInUp} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 w-fit min-h-[1.2em]">
+              <motion.h1 variants={isMobile ? fadeInUpMobile : fadeInUp} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight tracking-tight mb-6 w-full md:w-fit min-h-[1.2em] mx-auto md:mx-0">
                   {isMobile ? (
                     <AnimatePresence mode="wait">
                       <motion.span
@@ -308,10 +340,10 @@ export default function Home() {
                     <span ref={el} />
                   )}
                 </motion.h1>
-              <motion.p variants={isMobile ? fadeInUpMobile : fadeInUp} className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+              <motion.p variants={isMobile ? fadeInUpMobile : fadeInUp} className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl mx-auto md:mx-0">
                 We deliver comprehensive managed IT services, expert consulting, and seamless project execution to help your business thrive in the digital age.
               </motion.p>
-              <motion.div variants={isMobile ? fadeInUpMobile : fadeInUp} className="flex flex-col sm:flex-row gap-4">
+              <motion.div variants={isMobile ? fadeInUpMobile : fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <Button size="lg" variant="default" asChild className="gap-2 bg-primary hover:bg-primary/90 w-full sm:w-auto">
                   <Link href="#contact">
                     Schedule Consultation

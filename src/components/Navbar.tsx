@@ -64,16 +64,21 @@ export default function Navbar() {
 
   // We want the same transparent-to-solid behavior on all pages
   const activeScrolled = scrolled;
-  const showWhiteLogo = activeScrolled || !isHome;
+  
+  // On mobile, when menu is open and at top, apply blur but keep transparent
+  const isMobileMenuOpenAtTop = mobileMenuOpen && !activeScrolled && isHome;
+  const showWhiteLogo = activeScrolled || !isHome || (mobileMenuOpen && !isMobileMenuOpenAtTop);
   const buttonVariant = (activeScrolled || !isHome) ? "secondary" : "default";
+  
+  const headerBgClass = isMobileMenuOpenAtTop
+    ? "bg-transparent backdrop-blur-md border-transparent"
+    : activeScrolled
+    ? "bg-[#041324]/95 backdrop-blur-md border-white/10 shadow-lg"
+    : "bg-transparent border-transparent";
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 border-b ${
-      activeScrolled 
-        ? "bg-[#041324]/95 backdrop-blur-md border-white/10 shadow-lg" 
-        : "bg-transparent border-transparent"
-    } py-5`}>
+      <header className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 border-b ${headerBgClass} py-5`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between relative z-[70]">
           <Link href="/" className="flex items-center gap-2">
             <div className="relative w-56 h-14">
@@ -148,7 +153,7 @@ export default function Navbar() {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className={`md:hidden p-2 rounded-lg transition-colors relative z-[70] ${
-              mobileMenuOpen 
+              mobileMenuOpen && !isMobileMenuOpenAtTop
                 ? "text-white hover:bg-white/10" 
                 : (activeScrolled || !isHome) 
                   ? "text-white hover:bg-white/10" 
@@ -168,16 +173,26 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden fixed inset-0 bg-[#041324] z-[50] pt-24 overflow-y-auto"
+            className={`md:hidden fixed inset-0 z-[50] pt-24 overflow-y-auto ${
+              isMobileMenuOpenAtTop
+                ? "bg-transparent backdrop-blur-md"
+                : "bg-[#041324]"
+            }`}
           >
             <nav className="flex flex-col p-6 space-y-2">
               <div>
                 <button
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className="w-full flex items-center justify-between py-4 text-white font-semibold text-lg border-b border-white/10"
+                  className={`w-full flex items-center justify-between py-4 font-semibold text-lg border-b ${
+                    isMobileMenuOpenAtTop
+                      ? "text-[#041324] border-[#041324]/10"
+                      : "text-white border-white/10"
+                  }`}
                 >
                   Services
-                  <ChevronDown className={`w-5 h-5 transition-transform text-white ${mobileServicesOpen ? "rotate-180" : ""}`} />
+                  <ChevronDown className={`w-5 h-5 transition-transform ${mobileServicesOpen ? "rotate-180" : ""} ${
+                    isMobileMenuOpenAtTop ? "text-[#041324]" : "text-white"
+                  }`} />
                 </button>
                 <AnimatePresence>
                   {mobileServicesOpen && (
@@ -193,11 +208,19 @@ export default function Navbar() {
                           <Link
                             key={service.href}
                             href={service.href}
-                            className="block py-3 text-white/90 hover:text-white transition-colors"
+                            className={`block py-3 transition-colors ${
+                              isMobileMenuOpenAtTop
+                                ? "text-[#041324]/90 hover:text-[#041324]"
+                                : "text-white/90 hover:text-white"
+                            }`}
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             <div className="font-medium">{service.name}</div>
-                            <div className="text-sm text-white/70">{service.description}</div>
+                            <div className={`text-sm ${
+                              isMobileMenuOpenAtTop
+                                ? "text-[#041324]/70"
+                                : "text-white/70"
+                            }`}>{service.description}</div>
                           </Link>
                         ))}
                       </div>
@@ -207,14 +230,22 @@ export default function Navbar() {
               </div>
               <Link
                 href="/#about"
-                className="py-4 text-white font-semibold text-lg border-b border-white/10 hover:text-white/90 transition-colors"
+                className={`py-4 font-semibold text-lg border-b transition-colors ${
+                  isMobileMenuOpenAtTop
+                    ? "text-[#041324] border-[#041324]/10 hover:text-[#041324]/90"
+                    : "text-white border-white/10 hover:text-white/90"
+                }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 About
               </Link>
               <Link
                 href="/#contact"
-                className="py-4 text-white font-semibold text-lg border-b border-white/10 hover:text-white/90 transition-colors"
+                className={`py-4 font-semibold text-lg border-b transition-colors ${
+                  isMobileMenuOpenAtTop
+                    ? "text-[#041324] border-[#041324]/10 hover:text-[#041324]/90"
+                    : "text-white border-white/10 hover:text-white/90"
+                }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact
@@ -222,7 +253,11 @@ export default function Navbar() {
               <div className="pt-6">
                 <Button 
                   asChild 
-                  className="w-full bg-white text-[#041324] hover:bg-white/90 font-bold h-12 text-base"
+                  className={`w-full font-bold h-12 text-base ${
+                    isMobileMenuOpenAtTop
+                      ? "bg-[#041324] text-white hover:bg-[#041324]/90"
+                      : "bg-white text-[#041324] hover:bg-white/90"
+                  }`}
                 >
                   <Link href="/#contact" onClick={() => setMobileMenuOpen(false)}>Get Started</Link>
                 </Button>
