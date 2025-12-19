@@ -95,7 +95,7 @@ export default function Navbar() {
             <div className="relative" ref={dropdownRef} onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
               <button 
                 className={`transition-colors font-semibold flex items-center gap-1 py-2 ${
-                  (activeScrolled || !isHome) ? "text-white/90 hover:text-white" : "text-[#041324] hover:text-primary"
+                  (activeScrolled || !isHome) ? "text-white/90 hover:text-white" : "text-[#1B1B1A] hover:text-primary"
                 }`}
               >
                 Services
@@ -120,10 +120,10 @@ export default function Navbar() {
                         }`}
                       >
                         <div className={`font-semibold transition-colors ${
-                          (activeScrolled || !isHome) ? "text-white group-hover:text-primary" : "text-[#041324] group-hover:text-primary"
+                          (activeScrolled || !isHome) ? "text-white group-hover:text-primary" : "text-[#1B1B1A] group-hover:text-primary"
                         }`}>{service.name}</div>
                         <div className={`text-xs ${
-                          (activeScrolled || !isHome) ? "text-white/50 group-hover:text-white/70" : "text-[#041324]/50 group-hover:text-[#041324]/70"
+                          (activeScrolled || !isHome) ? "text-white/50 group-hover:text-white/70" : "text-[#1B1B1A]/50 group-hover:text-[#1B1B1A]/70"
                         }`}>{service.description}</div>
                       </Link>
                     ))}
@@ -132,10 +132,10 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
             <Link href="/#about" className={`transition-colors font-semibold ${
-              (activeScrolled || !isHome) ? "text-white/90 hover:text-white" : "text-[#041324] hover:text-primary"
+              (activeScrolled || !isHome) ? "text-white/90 hover:text-white" : "text-[#1B1B1A] hover:text-primary"
             }`}>About</Link>
             <Link href="/#contact" className={`transition-colors font-semibold ${
-              (activeScrolled || !isHome) ? "text-white/90 hover:text-white" : "text-[#041324] hover:text-primary"
+              (activeScrolled || !isHome) ? "text-white/90 hover:text-white" : "text-[#1B1B1A] hover:text-primary"
             }`}>Contact</Link>
           </nav>
           <Button 
@@ -143,7 +143,7 @@ export default function Navbar() {
             asChild 
             className={`hidden md:inline-flex transition-all duration-300 font-bold px-6 h-11 ${
               (activeScrolled || !isHome)
-                ? "bg-white text-[#041324] hover:bg-white/90" 
+                ? "bg-white text-[#1B1B1A] hover:bg-white/90" 
                 : "bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20"
             }`}
           >
@@ -157,7 +157,7 @@ export default function Navbar() {
                 ? "text-white hover:bg-white/10" 
                 : (activeScrolled || !isHome) 
                   ? "text-white hover:bg-white/10" 
-                  : "text-[#041324] hover:bg-[#041324]/10"
+                  : "text-[#1B1B1A] hover:bg-[#041324]/10"
             }`}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
@@ -185,13 +185,13 @@ export default function Navbar() {
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                   className={`w-full flex items-center justify-between py-4 font-semibold text-lg border-b ${
                     isMobileMenuOpenAtTop
-                      ? "text-[#041324] border-[#041324]/10"
+                      ? "text-[#1B1B1A] border-[#041324]/10"
                       : "text-white border-white/10"
                   }`}
                 >
                   Services
                   <ChevronDown className={`w-5 h-5 transition-transform ${mobileServicesOpen ? "rotate-180" : ""} ${
-                    isMobileMenuOpenAtTop ? "text-[#041324]" : "text-white"
+                    isMobileMenuOpenAtTop ? "text-[#1B1B1A]" : "text-white"
                   }`} />
                 </button>
                 <AnimatePresence>
@@ -210,7 +210,7 @@ export default function Navbar() {
                             href={service.href}
                             className={`block py-3 transition-colors ${
                               isMobileMenuOpenAtTop
-                                ? "text-[#041324]/90 hover:text-[#041324]"
+                                ? "text-[#1B1B1A]/90 hover:text-[#1B1B1A]"
                                 : "text-white/90 hover:text-white"
                             }`}
                             onClick={() => setMobileMenuOpen(false)}
@@ -218,7 +218,7 @@ export default function Navbar() {
                             <div className="font-medium">{service.name}</div>
                             <div className={`text-sm ${
                               isMobileMenuOpenAtTop
-                                ? "text-[#041324]/70"
+                                ? "text-[#1B1B1A]/70"
                                 : "text-white/70"
                             }`}>{service.description}</div>
                           </Link>
@@ -232,7 +232,7 @@ export default function Navbar() {
                 href="/#about"
                 className={`py-4 font-semibold text-lg border-b transition-colors ${
                   isMobileMenuOpenAtTop
-                    ? "text-[#041324] border-[#041324]/10 hover:text-[#041324]/90"
+                    ? "text-[#1B1B1A] border-[#041324]/10 hover:text-[#1B1B1A]/90"
                     : "text-white border-white/10 hover:text-white/90"
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
@@ -243,7 +243,7 @@ export default function Navbar() {
                 href="/#contact"
                 className={`py-4 font-semibold text-lg border-b transition-colors ${
                   isMobileMenuOpenAtTop
-                    ? "text-[#041324] border-[#041324]/10 hover:text-[#041324]/90"
+                    ? "text-[#1B1B1A] border-[#041324]/10 hover:text-[#1B1B1A]/90"
                     : "text-white border-white/10 hover:text-white/90"
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
@@ -256,7 +256,7 @@ export default function Navbar() {
                   className={`w-full font-bold h-12 text-base ${
                     isMobileMenuOpenAtTop
                       ? "bg-[#041324] text-white hover:bg-[#041324]/90"
-                      : "bg-white text-[#041324] hover:bg-white/90"
+                      : "bg-white text-[#1B1B1A] hover:bg-white/90"
                   }`}
                 >
                   <Link href="/#contact" onClick={() => setMobileMenuOpen(false)}>Get Started</Link>
