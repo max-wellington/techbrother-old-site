@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Monitor, Wrench, Users, Shield, Clock, Headphones, ChevronRight, Server, Cloud, Lock, CheckCircle2, XCircle, Search, Zap, ShieldCheck, Loader2 } from "lucide-react";
+import { Monitor, Wrench, Users, Shield, Clock, Headphones, ChevronRight, Server, Cloud, Lock, CheckCircle2, XCircle, Search, Zap, ShieldCheck, Loader2, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -392,36 +392,81 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-white border-y border-border">
+      <section className="py-12 bg-[#041324] border-y border-border">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="flex flex-col gap-5">
-              <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center">
-                <Search className="w-7 h-7 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-foreground mb-2">Strategic Discovery</h3>
-                <p className="text-muted-foreground leading-relaxed">We conduct deep-tier audits to uncover hidden vulnerabilities and identify opportunities for optimization.</p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-5">
-              <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center">
-                <Zap className="w-7 h-7 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-foreground mb-2">Seamless Integration</h3>
-                <p className="text-muted-foreground leading-relaxed">Our implementation phase ensures zero-downtime migrations and enterprise-grade deployment of new tech.</p>
-              </div>
-            </div>
-            <div className="flex flex-col gap-5">
-              <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center">
-                <ShieldCheck className="w-7 h-7 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-foreground mb-2">Adaptive Management</h3>
-                <p className="text-muted-foreground leading-relaxed">Continuous 24/7 monitoring and proactive maintenance keep your infrastructure resilient and future-proof.</p>
-              </div>
-            </div>
+          <motion.div 
+            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: isMobile ? 0 : 0.4 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Our Proud Partners</h2>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              Trusted by industry leaders and powered by world-class technology partners
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
+            <motion.div
+              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: isMobile ? 0 : 0.4, delay: 0 }}
+              className="flex items-center justify-center w-full h-24"
+            >
+              <Image
+                src="/partner-logo-1.svg"
+                alt="Partner Logo 1"
+                width={150}
+                height={60}
+                className="object-contain max-h-16 w-auto"
+              />
+            </motion.div>
+            <motion.div
+              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: isMobile ? 0 : 0.4, delay: isMobile ? 0 : 0.1 }}
+              className="flex items-center justify-center w-full h-24"
+            >
+              <Image
+                src="/Microsoft-logo.webp"
+                alt="Microsoft"
+                width={150}
+                height={60}
+                className="object-contain max-h-16 w-auto"
+              />
+            </motion.div>
+            <motion.div
+              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: isMobile ? 0 : 0.4, delay: isMobile ? 0 : 0.2 }}
+              className="flex items-center justify-center w-full h-24"
+            >
+              <Image
+                src="/partner-logo-2.svg"
+                alt="Partner Logo 2"
+                width={150}
+                height={60}
+                className="object-contain max-h-16 w-auto"
+              />
+            </motion.div>
+            <motion.div
+              initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: isMobile ? 0 : 0.4, delay: isMobile ? 0 : 0.3 }}
+              className="flex items-center justify-center w-full h-24"
+            >
+              <Image
+                src="/assets_3eb6f92aedf74f109c7b4b0897ec39a8_bf879a26d9994fd8b3b0d8878c9474f4.webp"
+                alt="Partner Logo"
+                width={150}
+                height={60}
+                className="object-contain max-h-16 w-auto"
+              />
+            </motion.div>
           </div>
         </div>
       </section>
@@ -768,34 +813,49 @@ export default function Home() {
               <p className="text-lg sm:text-xl text-muted-foreground mb-8">
                 Ready to transform your IT operations? Get in touch with our team to discuss your needs.
               </p>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
-                    <Headphones className="w-6 h-6 text-primary" />
+                    <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Expert Support</h3>
-                    <p className="text-muted-foreground">Our experienced team is always available to help you resolve issues quickly.</p>
+                    <a href="mailto:max@techbrother.io" className="text-lg font-semibold text-foreground hover:text-primary transition-colors">
+                      max@techbrother.io
+                    </a>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
+                <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
-                    <Clock className="w-6 h-6 text-primary" />
+                    <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Fast Response</h3>
-                    <p className="text-muted-foreground">We respond to all inquiries within 1 business hour.</p>
+                    <a href="tel:+18139566394" className="text-lg font-semibold text-foreground hover:text-primary transition-colors">
+                      (813) 956-6394
+                    </a>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
+                <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
-                    <Shield className="w-6 h-6 text-primary" />
+                    <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Free Assessment</h3>
-                    <p className="text-muted-foreground">Get a complimentary IT infrastructure evaluation.</p>
+                    <span className="text-lg font-semibold text-foreground">
+                      Tampa, FL
+                    </span>
                   </div>
                 </div>
+              </div>
+              <div className="w-full h-[210px] rounded-xl overflow-hidden border border-border shadow-lg">
+                <iframe
+                  src="https://www.google.com/maps?q=Tampa,+FL+33607&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Tampa, FL 33607 Location"
+                />
               </div>
             </motion.div>
 

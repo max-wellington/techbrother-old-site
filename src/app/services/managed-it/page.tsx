@@ -99,27 +99,16 @@ export default function ManagedITPage() {
 
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">What&apos;s Included</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Everything you need to keep your IT infrastructure secure, optimized, and running 24/7.
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {managedServices.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
+              <div key={index}>
                 <Card className="h-full border-2 hover:border-primary/50 transition-colors">
                   <CardHeader>
                     <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
@@ -131,7 +120,7 @@ export default function ManagedITPage() {
                     <p className="text-muted-foreground">{service.description}</p>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -140,11 +129,7 @@ export default function ManagedITPage() {
       <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
+            <div>
               <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Why Choose Managed IT?</h2>
               <p className="text-lg text-muted-foreground mb-8">
                 Outsourcing your IT management to TechBrother means gaining a dedicated team of experts without the overhead of hiring full-time staff. We become an extension of your business.
@@ -164,37 +149,27 @@ export default function ManagedITPage() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-2 gap-4"
-            >
+            </div>
+            <div className="grid grid-cols-2 gap-4">
               {benefits.map((benefit, index) => (
                 <div key={index} className={`bg-primary/10 rounded-2xl p-6 ${index % 2 === 1 ? 'mt-8' : ''}`}>
                   <h3 className="font-semibold text-lg mb-2 text-foreground">{benefit.title}</h3>
                   <p className="text-sm text-muted-foreground">{benefit.description}</p>
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">How It Works</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Getting started with managed IT services is simple and straightforward.
             </p>
-          </motion.div>
+          </div>
 
           <div className="max-w-4xl mx-auto">
             <div className="space-y-8">
@@ -216,14 +191,7 @@ export default function ManagedITPage() {
                   description: "We continuously monitor, maintain, and optimize your IT environment while providing responsive support for any issues."
                 }
               ].map((step, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex gap-6 items-start"
-                >
+                <div key={index} className="flex gap-6 items-start">
                   <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold shrink-0">
                     {index + 1}
                   </div>
@@ -231,7 +199,7 @@ export default function ManagedITPage() {
                     <h3 className="text-xl font-semibold text-foreground mb-2">{step.title}</h3>
                     <p className="text-muted-foreground">{step.description}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -240,11 +208,7 @@ export default function ManagedITPage() {
 
       <section className="py-20 bg-[#041324] text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Simplify Your IT?</h2>
             <p className="text-xl text-white/80 mb-8">
               Let us handle your technology so you can focus on what matters most - growing your business. Contact us today for a free consultation.
@@ -255,7 +219,7 @@ export default function ManagedITPage() {
                 <ChevronRight className="w-4 h-4" />
               </Link>
             </Button>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>
