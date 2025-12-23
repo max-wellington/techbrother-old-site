@@ -97,35 +97,6 @@ export default function ManagedITPage() {
         </div>
       </section>
 
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">What&apos;s Included</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to keep your IT infrastructure secure, optimized, and running 24/7.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {managedServices.map((service, index) => (
-              <div key={index}>
-                <Card className="h-full border-2 hover:border-primary/50 transition-colors">
-                  <CardHeader>
-                    <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                      <service.icon className="w-7 h-7 text-primary" />
-                    </div>
-                    <CardTitle className="text-xl">{service.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground">{service.description}</p>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -158,6 +129,35 @@ export default function ManagedITPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">What&apos;s Included</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Everything you need to keep your IT infrastructure secure, optimized, and running 24/7.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {managedServices.map((service, index) => (
+              <div key={index}>
+                <Card className="h-full border-2 hover:border-primary/50 transition-colors">
+                  <CardHeader>
+                    <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+                      <service.icon className="w-7 h-7 text-primary" />
+                    </div>
+                    <CardTitle className="text-xl">{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{service.description}</p>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
           </div>
         </div>
       </section>

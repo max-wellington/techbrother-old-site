@@ -27,7 +27,7 @@ export default function Footer() {
             <h3 className="font-semibold mb-4 text-white">Services</h3>
             <ul className="space-y-2 text-white/70">
               <li><Link href="/services/managed-it" className="hover:text-primary transition-colors">Managed IT</Link></li>
-              <li><Link href="/services/one-off-projects" className="hover:text-primary transition-colors">One-Off Projects</Link></li>
+              <li><Link href="/services/one-off-projects" className="hover:text-primary transition-colors">IT Projects</Link></li>
               <li><Link href="/services/it-consulting" className="hover:text-primary transition-colors">Consulting</Link></li>
             </ul>
           </div>

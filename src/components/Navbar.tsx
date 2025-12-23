@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, MapPin, Mail, Phone, Monitor } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,7 +13,7 @@ const LOGO_BLACK_URL = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/rend
 
 const services = [
   { name: "Managed IT Services", href: "/services/managed-it", description: "Seamless business operations" },
-  { name: "One-Off Projects", href: "/services/one-off-projects", description: "Expert initiative execution" },
+  { name: "IT Projects", href: "/services/one-off-projects", description: "Expert initiative execution" },
   { name: "IT Consulting", href: "/services/it-consulting", description: "Strategic technology alignment" },
 ];
 
@@ -22,9 +22,12 @@ export default function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const isHome = pathname === "/";
+
+  const serviceNames = ["Managed IT Services", "IT Projects", "IT Consulting"];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,26 +65,59 @@ export default function Navbar() {
     setMobileServicesOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentServiceIndex((prev) => (prev + 1) % serviceNames.length);
+    }, 3000); // Change every 3 seconds
+    return () => clearInterval(interval);
+  }, [serviceNames.length]);
+
   // We want the same transparent-to-solid behavior on all pages
   const activeScrolled = scrolled;
+  const isServicePage = pathname.startsWith("/services");
   
   // On mobile, when menu is open and at top, apply blur but keep transparent
   const isMobileMenuOpenAtTop = mobileMenuOpen && !activeScrolled && isHome;
-  const showWhiteLogo = activeScrolled || !isHome || (mobileMenuOpen && !isMobileMenuOpenAtTop);
+  // Use white logo on service pages when at top (dark hero), otherwise use black
+  const showWhiteLogo = (isServicePage && !activeScrolled);
   const buttonVariant = (activeScrolled || !isHome) ? "secondary" : "default";
+  // Use dark text when scrolled, or on home page. Use white text on service pages at top only
+  const useDarkText = activeScrolled || !isServicePage;
   
   const headerBgClass = isMobileMenuOpenAtTop
     ? "bg-transparent backdrop-blur-md border-transparent"
     : activeScrolled
-    ? "bg-[#041324]/95 backdrop-blur-md border-white/10 shadow-lg"
+    ? "bg-white/90 backdrop-blur-md border-border shadow-lg"
     : "bg-transparent border-transparent";
 
   return (
     <>
-      <header className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 border-b ${headerBgClass} py-5`}>
+      <div className="fixed top-0 left-0 right-0 z-[60] backdrop-blur-md border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between text-sm">
+          <div className="flex items-center gap-6">
+            <a href="tel:+18139566394" className={`flex items-center gap-2 transition-colors ${isServicePage && !activeScrolled ? "text-white/80 hover:text-white" : "text-[#1B1B1A]/80 hover:text-[#1B1B1A]"}`}>
+              <Phone className="w-4 h-4 text-primary" />
+              <span>(813) 956-6394</span>
+            </a>
+            <a href="mailto:max@techbrother.io" className={`flex items-center gap-2 transition-colors ${isServicePage && !activeScrolled ? "text-white/80 hover:text-white" : "text-[#1B1B1A]/80 hover:text-[#1B1B1A]"}`}>
+              <Mail className="w-4 h-4 text-primary" />
+              <span>max@techbrother.io</span>
+            </a>
+          </div>
+          <Link href="#" className={`flex items-center gap-2 transition-colors font-medium ${isServicePage && !activeScrolled ? "text-white/80 hover:text-white" : "text-[#1B1B1A]/80 hover:text-[#1B1B1A]"}`}>
+            <Monitor className="w-4 h-4 text-primary" />
+            <span>Client Portal</span>
+          </Link>
+        </div>
+      </div>
+      <motion.header 
+        animate={{ top: scrolled ? 0 : 42 }}
+        transition={{ duration: 0 }}
+        className={`fixed left-0 right-0 z-[70] transition-all duration-300 border-b ${headerBgClass} py-3`}
+      >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between relative z-[70]">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="relative w-56 h-14">
+          <Link href="/" className="flex items-center gap-3">
+            <div className="relative w-56 h-12">
               <Image 
                 src={showWhiteLogo ? LOGO_WHITE_URL : LOGO_BLACK_URL}
                 alt="TechBrother Logo"
@@ -90,12 +126,32 @@ export default function Navbar() {
                 priority
               />
             </div>
+            <span className={`text-2xl font-light flex items-center justify-center leading-none -mt-1 ${useDarkText ? "text-[#1B1B1A]/60" : "text-white/60"}`}>|</span>
+            <div className="relative h-12 flex items-center overflow-hidden min-w-[200px]">
+              <AnimatePresence>
+                <motion.div
+                  key={currentServiceIndex}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ 
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20,
+                    duration: 0.3
+                  }}
+                  className={`absolute left-0 font-semibold whitespace-nowrap ${useDarkText ? "text-[#1B1B1A]" : "text-white"}`}
+                >
+                  {serviceNames[currentServiceIndex]}
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </Link>
           <nav className="hidden md:flex items-center gap-8">
             <div className="relative" ref={dropdownRef} onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
               <button 
                 className={`transition-colors font-semibold flex items-center gap-1 py-2 ${
-                  (activeScrolled || !isHome) ? "text-white/90 hover:text-white" : "text-[#1B1B1A] hover:text-primary"
+                  useDarkText ? "text-[#1B1B1A] hover:text-primary" : "text-white/90 hover:text-white"
                 }`}
               >
                 Services
@@ -108,7 +164,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     className={`absolute top-full left-0 w-64 border rounded-xl shadow-2xl py-3 overflow-hidden z-[80] ${
-                      (activeScrolled || !isHome) ? "bg-[#041324] border-white/10" : "bg-white border-border"
+                      useDarkText ? "bg-white border-border" : "bg-white border-border"
                     }`}
                   >
                     {services.map((service) => (
@@ -116,14 +172,14 @@ export default function Navbar() {
                         key={service.href}
                         href={service.href}
                         className={`block px-5 py-3 transition-colors group ${
-                          (activeScrolled || !isHome) ? "hover:bg-white/5" : "hover:bg-[#041324]/5"
+                          useDarkText ? "hover:bg-[#041324]/5" : "hover:bg-[#041324]/5"
                         }`}
                       >
                         <div className={`font-semibold transition-colors ${
-                          (activeScrolled || !isHome) ? "text-white group-hover:text-primary" : "text-[#1B1B1A] group-hover:text-primary"
+                          useDarkText ? "text-[#1B1B1A] group-hover:text-primary" : "text-[#1B1B1A] group-hover:text-primary"
                         }`}>{service.name}</div>
                         <div className={`text-xs ${
-                          (activeScrolled || !isHome) ? "text-white/50 group-hover:text-white/70" : "text-[#1B1B1A]/50 group-hover:text-[#1B1B1A]/70"
+                          useDarkText ? "text-[#1B1B1A]/50 group-hover:text-[#1B1B1A]/70" : "text-[#1B1B1A]/50 group-hover:text-[#1B1B1A]/70"
                         }`}>{service.description}</div>
                       </Link>
                     ))}
@@ -132,23 +188,29 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
             <Link href="/#about" className={`transition-colors font-semibold ${
-              (activeScrolled || !isHome) ? "text-white/90 hover:text-white" : "text-[#1B1B1A] hover:text-primary"
+              useDarkText ? "text-[#1B1B1A] hover:text-primary" : "text-white/90 hover:text-white"
             }`}>About</Link>
             <Link href="/#contact" className={`transition-colors font-semibold ${
-              (activeScrolled || !isHome) ? "text-white/90 hover:text-white" : "text-[#1B1B1A] hover:text-primary"
+              useDarkText ? "text-[#1B1B1A] hover:text-primary" : "text-white/90 hover:text-white"
             }`}>Contact</Link>
           </nav>
-          <Button 
-            variant={buttonVariant} 
-            asChild 
-            className={`hidden md:inline-flex transition-all duration-300 font-bold px-6 h-11 ${
-              (activeScrolled || !isHome)
-                ? "bg-white text-[#1B1B1A] hover:bg-white/90" 
-                : "bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20"
-            }`}
-          >
-            <Link href="/#contact">Get Started</Link>
-          </Button>
+          <div className="hidden md:flex items-center gap-4">
+            <div className={`flex items-center gap-2 text-sm font-medium ${useDarkText ? "text-[#1B1B1A]/80" : "text-white/80"}`}>
+              <MapPin className="w-4 h-4" />
+              <span>Based in Tampa</span>
+            </div>
+            <Button 
+              variant={buttonVariant} 
+              asChild 
+              className={`transition-all duration-300 font-bold px-6 h-11 ${
+                useDarkText
+                  ? "bg-primary text-white hover:bg-primary/90" 
+                  : "bg-primary text-white hover:bg-primary/90 shadow-lg shadow-primary/20"
+              }`}
+            >
+              <Link href="/#contact">Get Started</Link>
+            </Button>
+          </div>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -164,7 +226,7 @@ export default function Navbar() {
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
-      </header>
+      </motion.header>
 
       <AnimatePresence>
         {mobileMenuOpen && (

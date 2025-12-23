@@ -415,7 +415,7 @@ export default function Home() {
               className="flex items-center justify-center w-full h-24"
             >
               <Image
-                src="/partner-logo-1.svg"
+                src="/levl.png"
                 alt="Partner Logo 1"
                 width={150}
                 height={60}
@@ -467,6 +467,42 @@ export default function Home() {
                 className="object-contain max-h-16 w-auto"
               />
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-8 bg-white border-b border-border">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div 
+            initial={isMobile ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: isMobile ? 0 : 0.4 }}
+            className="text-center mb-6"
+          >
+            <p className="text-lg font-semibold text-foreground">Let us help you plan your next project!</p>
+          </motion.div>
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+            {[
+              "Office Setup",
+              "Security Cameras",
+              "Device Backups",
+              "Payment Device Setups",
+              "Network Infrastructure",
+              "Cloud Migration"
+            ].map((project, index) => (
+              <motion.div
+                key={index}
+                initial={isMobile ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: isMobile ? 0 : 0.3, delay: index * 0.05 }}
+              >
+                <Link href="/#contact" className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium hover:bg-primary/20 transition-colors cursor-pointer inline-block">
+                  {project}
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -544,7 +580,7 @@ export default function Home() {
                     <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                       <Wrench className="w-7 h-7 text-primary" />
                     </div>
-                    <CardTitle className="text-2xl">One-Off Projects</CardTitle>
+                    <CardTitle className="text-2xl">IT Projects</CardTitle>
                     <CardDescription className="text-base">
                       Expert execution for your specific IT initiatives
                     </CardDescription>
